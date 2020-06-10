@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/home" android:title="home" android:icon="@drawable/home" ></item>
+    <item android:id="@+id/wallet" android:title="ví" android:icon="@drawable/wallet"></item>
+    <item android:id="@+id/add" android:title="thêm" android:icon="@drawable/plus"></item>
+    <item android:id="@+id/report" android:title="báo cáo" android:icon="@drawable/marketing"></item>
+    <item android:id="@+id/user" android:title="user" android:icon="@drawable/user"></item>
+</menu>

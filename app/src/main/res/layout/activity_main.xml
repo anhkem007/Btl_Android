@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:weightSum="10"
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout
-        android:background="@color/colorAccent"
-        android:layout_weight="9"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"></LinearLayout>
 
-    <GridView
+    <FrameLayout
+        android:id="@+id/fragmnet_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="9">
+
+    </FrameLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav"
-        android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="0sp"
+        android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="?attr/colorButtonNormal"
-        android:numColumns="5"></GridView>
-
-
+        android:background="@color/navcolor"
+        app:menu="@menu/nav" />
 </LinearLayout>
