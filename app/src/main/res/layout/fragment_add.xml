@@ -100,20 +100,21 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:weightSum="6"
+                    android:weightSum="13"
                     >
 
 
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_weight="1"
+                    <ImageView
+                        android:layout_weight="3"
                         android:layout_margin="10dp"
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/credit_card"></androidx.appcompat.widget.AppCompatImageView>
+                        android:layout_height="50dp"
+                        android:scaleType="fitStart"
+                        android:src="@drawable/credit_card"></ImageView>
 
                     <TextView
                         android:layout_gravity="center"
-                        android:layout_weight="4"
+                        android:layout_weight="8"
                         android:text="Thẻ ngân hàng"
                         android:textSize="20sp"
                         android:layout_width="0dp"
@@ -121,11 +122,13 @@
                     </TextView>
 
                     <ImageView
-                        android:layout_weight="1"
+                        android:layout_weight="2"
                         android:layout_width="0dp"
                         android:layout_margin="10dp"
-                        android:layout_height="60dp"
+                        android:layout_height="50dp"
                         android:layout_gravity="center"
+                        android:scaleY="1.5"
+                        android:scaleX="1"
                         android:layout_marginRight="30dp"
                         android:background="@drawable/ic_chevronright">
 
@@ -134,25 +137,35 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/chonhangmuc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:weightSum="6">
-                    <androidx.cardview.widget.CardView
-                        android:layout_weight="1"
+                    android:weightSum="13">
+
+                    <FrameLayout
+                        android:layout_weight="3"
                         android:layout_margin="10dp"
                         android:layout_width="0dp"
-                        android:layout_height="60dp">
+                        android:layout_height="50dp"
+                        >
 
-                        <androidx.appcompat.widget.AppCompatImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:src="@drawable/credit_card"
-                            ></androidx.appcompat.widget.AppCompatImageView>
-                    </androidx.cardview.widget.CardView>
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            app:cardCornerRadius="25dp">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:background="@color/colorAccent"
+                                android:layout_height="match_parent"
+                                android:padding="3dp"
+                                android:src="@drawable/credit_card"></ImageView>
+                        </androidx.cardview.widget.CardView>
+                    </FrameLayout>
 
                     <TextView
                         android:layout_gravity="center"
-                        android:layout_weight="4"
+                        android:layout_weight="8"
                         android:text="Chọn danh mục"
                         android:textSize="20sp"
                         android:layout_width="0dp"
@@ -160,10 +173,12 @@
                     </TextView>
 
                     <ImageView
-                        android:layout_weight="1"
+                        android:layout_weight="2"
                         android:layout_width="0dp"
                         android:layout_margin="10dp"
-                        android:layout_height="60dp"
+                        android:layout_height="50dp"
+                        android:scaleX="1"
+                        android:scaleY="1.5"
                         android:layout_gravity="center"
                         android:layout_marginRight="10dp"
                         android:background="@drawable/ic_chevronright">
