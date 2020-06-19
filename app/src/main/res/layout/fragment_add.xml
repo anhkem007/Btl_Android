@@ -1,19 +1,213 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:weightSum="10"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout
+        android:layout_weight="1"
+        android:background="#0D8CFB"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        >
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Fragment Add"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/spinner_thu_chi"
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:background="@drawable/spiner_thu_chi">
+
+        </androidx.appcompat.widget.AppCompatSpinner>
+
+        <Button
+            android:layout_gravity="center|right"
+            android:layout_margin="10dp"
+            android:background="@drawable/ic_check"
+            android:layout_width="40dp"
+            android:layout_height="50dp">
+        </Button>
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_weight="9"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+                <TextView
+                    android:id="@+id/tvtenkhoanthuchi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="#F3100B"
+                    android:text="Tên khoản thu chi"></TextView>
+
+                <EditText
+                    android:id="@+id/tenkhoanthuchi"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/edittext"
+                    android:layout_width="match_parent"
+                    android:paddingLeft="10dp"
+                    android:layout_height="60dp"
+                    android:ems="10"
+                    android:layout_gravity="center"
+                    android:inputType="textPersonName"
+                    android:hint="Tên" />
+
+                <TextView
+                    android:id="@+id/tvsotien"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="Số tiền"
+                    android:textColor="#F3100B"></TextView>
+
+                <EditText
+                    android:id="@+id/sotien"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center|right"
+                    android:layout_margin="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/edittext2"
+                    android:ems="10"
+                    android:inputType="number"
+                    android:paddingRight="40dp"
+                    android:text="0"
+                    android:textAlignment="viewEnd"
+                    android:textColor="@color/design_default_color_error"
+                    android:textSize="30sp"
+                    tools:ignore="RtlCompat"></EditText>
+
+                <TextView
+                    android:id="@+id/tvloaivi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="#F3100B"
+                    android:text="Chọn ví"></TextView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="6"
+                    >
+
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_weight="1"
+                        android:layout_margin="10dp"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/credit_card"></androidx.appcompat.widget.AppCompatImageView>
+
+                    <TextView
+                        android:layout_gravity="center"
+                        android:layout_weight="4"
+                        android:text="Thẻ ngân hàng"
+                        android:textSize="20sp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content">
+                    </TextView>
+
+                    <ImageView
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_margin="10dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="30dp"
+                        android:background="@drawable/ic_chevronright">
+
+                    </ImageView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="6">
+                    <androidx.cardview.widget.CardView
+                        android:layout_weight="1"
+                        android:layout_margin="10dp"
+                        android:layout_width="0dp"
+                        android:layout_height="60dp">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/credit_card"
+                            ></androidx.appcompat.widget.AppCompatImageView>
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:layout_gravity="center"
+                        android:layout_weight="4"
+                        android:text="Chọn danh mục"
+                        android:textSize="20sp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content">
+                    </TextView>
+
+                    <ImageView
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_margin="10dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/ic_chevronright">
+
+                    </ImageView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:layout_height="wrap_content">
+                    <Button
+                        android:layout_margin="10dp"
+                        android:layout_width="50dp"
+                        android:background="@drawable/ic_date"
+                        android:layout_height="50dp">
+                    </Button>
+                    <EditText
+                        android:layout_width="130dp"
+                        android:layout_height="50dp"
+                        android:inputType="date"
+                        android:layout_margin="10dp"></EditText>
+
+                </LinearLayout>
+
+                <EditText
+                    android:layout_width="350dp"
+                    android:layout_height="200dp"
+                    android:layout_margin="10dp"
+                    android:inputType="textMultiLine"
+                    android:layout_gravity="center"
+                    ></EditText>
+
+                <Button
+                    android:layout_margin="10dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/ic_save"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp">
+                </Button>
+
+            </LinearLayout>
+        </ScrollView>
+    </FrameLayout>
+
+</LinearLayout>

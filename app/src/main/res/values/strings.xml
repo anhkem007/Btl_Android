@@ -2,4 +2,7 @@
     <string name="app_name">Quanlychitieu</string>
     <string name="facebook_app_id">2755396831359327</string>
     <string name="fb_login_protocol_scheme">fb2755396831359327</string>
+    <string name="thu">Thu Tiền</string>
+    <string name="chi">Chi Tiền</string>
+    <string name="vi">Ví</string>
 </resources>
