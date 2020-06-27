@@ -5,4 +5,26 @@
     <string name="thu">Thu Tiền</string>
     <string name="chi">Chi Tiền</string>
     <string name="vi">Ví</string>
+    <string name="qltc">Quản tài chính</string>
+    <string name="baocaotc">Báo cáo tài chính</string>
+    <string name="tongtien">Tổng tiền</string>
+    <string name="themthanhcong">Thêm thành công!</string>
+    <string name="lsthuchi">Lịch sử thu chi</string>
+    <string name="ngaybd">Bắt đầu: </string>
+    <string name="ngaykt">Kết thúc: </string>
+    <string name="tatca">Tất cả</string>
+
+<!--    Mục chi -->
+    <string name="chi_quan_ao">Quần áo</string>
+    <string name="chi_xe_co">Xe cộ</string>
+    <string name="chi_mua_sam">Mua sắm</string>
+    <string name="chi_an_uong">Ăn uống</string>
+    <string name="chi_dien_thoai">Điện thoại</string>
+    <string name="chi_the_duc">Thể dục, thể thao</string>
+    <string name="chi_hoc_tap">Học tập</string>
+
+
+<!--    Mục thu-->
+
+
 </resources>

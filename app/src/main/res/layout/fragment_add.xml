@@ -98,6 +98,7 @@
                     android:text="Chọn ví"></TextView>
 
                 <LinearLayout
+                    android:id="@+id/chonvi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:weightSum="13"
@@ -105,6 +106,7 @@
 
 
                     <ImageView
+                        android:id="@+id/imgloaivi"
                         android:layout_weight="3"
                         android:layout_margin="10dp"
                         android:layout_width="0dp"
@@ -113,13 +115,14 @@
                         android:src="@drawable/credit_card"></ImageView>
 
                     <TextView
+                        android:id="@+id/txttenvi"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_weight="8"
                         android:text="Thẻ ngân hàng"
-                        android:textSize="20sp"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content">
-                    </TextView>
+                        android:textColor="@color/design_default_color_on_secondary"
+                        android:textSize="20sp"></TextView>
 
                     <ImageView
                         android:layout_weight="2"
@@ -127,14 +130,20 @@
                         android:layout_margin="10dp"
                         android:layout_height="50dp"
                         android:layout_gravity="center"
-                        android:scaleY="1.5"
+                        android:scaleY="1"
                         android:scaleX="1"
                         android:layout_marginRight="30dp"
-                        android:background="@drawable/ic_chevronright">
+                        android:background="@drawable/chevron_right">
 
                     </ImageView>
 
                 </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="#F3100B"
+                    android:text="Danh mục"></TextView>
 
                 <LinearLayout
                     android:id="@+id/chonhangmuc"
@@ -155,57 +164,77 @@
                             app:cardCornerRadius="25dp">
 
                             <ImageView
+                                android:id="@+id/imgdanhmucadd"
                                 android:layout_width="match_parent"
-                                android:background="@color/colorAccent"
                                 android:layout_height="match_parent"
+                                android:background="@color/colorAccent"
                                 android:padding="3dp"
-                                android:src="@drawable/credit_card"></ImageView>
+                                android:src="@drawable/ic_sell"
+                                ></ImageView>
                         </androidx.cardview.widget.CardView>
                     </FrameLayout>
 
                     <TextView
+                        android:id="@+id/txttendanhmuc"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_weight="8"
                         android:text="Chọn danh mục"
-                        android:textSize="20sp"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content">
-                    </TextView>
+                        android:textColor="@color/design_default_color_on_secondary"
+                        android:textSize="20sp"></TextView>
 
                     <ImageView
-                        android:layout_weight="2"
                         android:layout_width="0dp"
-                        android:layout_margin="10dp"
                         android:layout_height="50dp"
-                        android:scaleX="1"
-                        android:scaleY="1.5"
                         android:layout_gravity="center"
+                        android:layout_margin="10dp"
                         android:layout_marginRight="10dp"
-                        android:background="@drawable/ic_chevronright">
+                        android:layout_weight="2"
+                        android:background="@drawable/chevron_right"
+                        android:scaleX="1"
+                        android:scaleY="1">
 
                     </ImageView>
 
                 </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="#F3100B"
+                    android:text="Thời gian"></TextView>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:gravity="center"
                     android:layout_height="wrap_content">
                     <Button
+                        android:id="@+id/btndate"
                         android:layout_margin="10dp"
                         android:layout_width="50dp"
                         android:background="@drawable/ic_date"
                         android:layout_height="50dp">
                     </Button>
                     <EditText
-                        android:layout_width="130dp"
+                        android:id="@+id/date"
+                        android:layout_width="wrap_content"
                         android:layout_height="50dp"
                         android:inputType="date"
                         android:layout_margin="10dp"></EditText>
 
                 </LinearLayout>
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="#F3100B"
+                    android:text="Ghi chú"></TextView>
+
                 <EditText
+                    android:id="@+id/edtghichu"
+                    android:background="@drawable/edittext"
                     android:layout_width="350dp"
                     android:layout_height="200dp"
                     android:layout_margin="10dp"
@@ -214,6 +243,7 @@
                     ></EditText>
 
                 <Button
+                    android:id="@+id/btnluukhoanthuchi"
                     android:layout_margin="10dp"
                     android:layout_gravity="center"
                     android:background="@drawable/ic_save"

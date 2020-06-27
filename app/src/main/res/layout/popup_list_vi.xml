@@ -7,7 +7,7 @@
     >
 
     <ListView
-        android:id="@+id/listdm"
+        android:id="@+id/listvi"
         android:layout_width="311dp"
         android:layout_height="432dp"
         android:layout_marginStart="10dp"
@@ -20,15 +20,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        android:text="Chọn danh mục"
+        android:text="Chọn ví"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/listdm"
+        app:layout_constraintBottom_toTopOf="@+id/listvi"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

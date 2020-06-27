@@ -51,8 +51,7 @@ public class DanhMucAdapter extends BaseAdapter {
         TextView textView = convertView.findViewById(R.id.txtdanhmuc);
         textView.setText(danhMucThuChiList.get(position).getTen());
         ImageView imageView = convertView.findViewById(R.id.imgdanhmuc);
-        Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.plus);
-        imageView.setImageBitmap(bitmap);
+        imageView.setImageBitmap(danhMucThuChiList.get(position).getHinhanh());
         return convertView;
     }
 }

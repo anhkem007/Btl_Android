@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditText
+        android:layout_gravity="center"
+        android:id="@+id/edttenvi"
+        android:hint="Ten vi"
+        android:layout_margin="20dp"
+        android:inputType="textPersonName"
+        android:layout_width="250dp"
+        android:layout_height="50dp">
+
+    </EditText>
+    <EditText
+        android:layout_gravity="center"
+        android:id="@+id/edtsodu"
+        android:inputType="number"
+        android:hint="so du"
+        android:layout_margin="20dp"
+        android:layout_width="250dp"
+        android:layout_height="50dp">
+    </EditText>
+    <Spinner
+        android:id="@+id/spnloaivi"
+        android:layout_margin="10dp"
+        android:layout_gravity="center"
+        android:layout_width="130dp"
+        android:layout_height="50dp">
+    </Spinner>
+    <LinearLayout
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:text="Hủy"
+            android:id="@+id/btnthoat"
+            android:layout_margin="10dp"
+            android:layout_width="100dp"
+            android:layout_height="50dp">
+        </Button>
+        <Button
+            android:text="Lưu"
+            android:id="@+id/btnluu"
+            android:layout_margin="10dp"
+            android:layout_width="100dp"
+            android:layout_height="50dp">
+        </Button>
+    </LinearLayout>
+</LinearLayout>

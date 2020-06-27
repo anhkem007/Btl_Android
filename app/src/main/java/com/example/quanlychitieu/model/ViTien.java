@@ -4,7 +4,7 @@ public class ViTien {
     private Integer id;
     private String ten;
     private Float sodu;
-    private Integer loai;
+    private Integer loai; // 1 vi tien, 2 the,
 
     public Integer getId() {
         return id;
@@ -38,7 +38,10 @@ public class ViTien {
         this.loai = loai;
     }
 
-    public ViTien(Integer id, String ten, Float sodu, Integer loai) {
+    public ViTien() {
+    }
+
+    public ViTien(Integer id, String ten, float sodu, Integer loai) {
         this.id = id;
         this.ten = ten;
         this.sodu = sodu;
