@@ -34,18 +34,22 @@
         android:orientation="vertical"
         android:layout_height="50dp">
         <TextView
+            android:id="@+id/tenkhoanthuchi2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="ten muc thu chi"
+            android:textColor="#000000"
+            android:textStyle="bold"
+
             android:textSize="20sp"
             ></TextView>
+
         <TextView
-            android:layout_marginTop="3dp"
+            android:id="@+id/sotien2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="so tien"
-            >
-        </TextView>
+            android:layout_marginTop="3dp"
+            android:text="so tien"></TextView>
     </LinearLayout>
     <FrameLayout
         android:layout_weight="4"
@@ -53,11 +57,13 @@
         android:layout_height="50dp">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/thoigian"
+            android:layout_width="83dp"
             android:layout_height="wrap_content"
-            android:text="18/10/1998"
-            android:textSize="18sp"
             android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:text="18/10/1998"
+            android:textSize="15sp"
 
             >
 

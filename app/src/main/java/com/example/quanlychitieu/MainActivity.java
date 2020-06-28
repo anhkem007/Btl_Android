@@ -43,15 +43,20 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.security.MessageDigest;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
-    Fragment home, wallet, user, add, report;
+    Fragment home, wallet, user, add, report, fragmentlstc;
     public static DanhMucThuChiDAO danhMucThuChiDAO;
+    public static ViDao viDao;
+    public static KhoanThuChiDao khoanThuChiDao;
     public String tagback;
     public String tagPresent;
     Fragment fragment;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,8 +64,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         danhMucThuChiDAO = new DanhMucThuChiDAO(this);
         danhMucThuChiDAO.getWritableDatabase();
-        KhoanThuChiDao khoanThuChiDao = new KhoanThuChiDao(this);
-        khoanThuChiDao.getbyDate("23/6/2020", "26/6/2020");
+        viDao = new ViDao(this);
+        khoanThuChiDao = new KhoanThuChiDao(this);
+
+        fragmentlstc = new FragmentReportLstc();
         home = new FragmentHome();
         add = new FragmentAdd();
         user = new FragmentUser();
@@ -91,7 +98,8 @@ public class MainActivity extends AppCompatActivity {
                         fragment = report;
                         break;
                 }
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
+
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment, fragment.getClass().getSimpleName()).show(fragment).commit();
                 return true;
             }
         });
@@ -101,6 +109,6 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, add).commit();
     }
     public void addFragmentLsthuchi(){
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new FragmentReportLstc()).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, fragmentlstc, fragmentlstc.getClass().getSimpleName()).hide(fragment).show(fragmentlstc).addToBackStack(fragment.getClass().getSimpleName()).commit();
     }
 }

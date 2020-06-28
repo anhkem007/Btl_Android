@@ -13,8 +13,18 @@
     <string name="ngaybd">Bắt đầu: </string>
     <string name="ngaykt">Kết thúc: </string>
     <string name="tatca">Tất cả</string>
+    <string name="tenkhoanthu">Tên khoản thu: </string>
+    <string name="tenkhoanchi">Tên khoản chi: </string>
+    <string name="sotien">Số tiền: </string>
+    <string name="tenvi">Ví: </string>
+    <string name="ngay">Ngày: </string>
+    <string name="hangmuc">Hạng mục: </string>
+    <string name="ghichu">Ghi chú: </string>
+    <string name="dong">Đóng</string>
+    <string name="nhapdungtime">Nhập đúng đinh dạng thời gian!</string>
 
-<!--    Mục chi -->
+    <!--    Mục chi -->
+    <string name="mucchi">Chi tiền</string>
     <string name="chi_quan_ao">Quần áo</string>
     <string name="chi_xe_co">Xe cộ</string>
     <string name="chi_mua_sam">Mua sắm</string>
@@ -24,7 +34,13 @@
     <string name="chi_hoc_tap">Học tập</string>
 
 
+
 <!--    Mục thu-->
+    <string name="mucthu">Thu tiền</string>
+    <string name="thu_tien_luon">Tiền lương</string>
+    <string name="thu_ban_do">Bán đồ</string>
+    <string name="thu_vay_no">Vay nợ</string>
+    <string name="thu_lai_xuat">Lãi xuất</string>
 
 
 </resources>

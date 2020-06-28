@@ -39,7 +39,7 @@ public class KhoanThuChiDao extends SQLiteOpenHelper {
             TEN + " TEXT, " +
             TIEN + " REAL, " +
             LOAI + " BIT, " +
-            THOIGIAN + " DATE, " +
+            THOIGIAN + " INTEGER, " +
             GHICHU + " TEXT )";
 
 
@@ -69,8 +69,7 @@ public class KhoanThuChiDao extends SQLiteOpenHelper {
         contentValues.put(IDDM, khoanThuChi.getDanhMucThuChi().getId());
         contentValues.put(TEN, khoanThuChi.getTen());
         contentValues.put(LOAI, khoanThuChi.getLoai());
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        contentValues.put(THOIGIAN, simpleDateFormat.format(khoanThuChi.getThoigian().getTime()));
+        contentValues.put(THOIGIAN, khoanThuChi.getThoigian().getTimeInMillis());
         contentValues.put(GHICHU, khoanThuChi.getGhiChu());
         contentValues.put(TIEN, khoanThuChi.getTien());
         database.insert(TB_NAME, null, contentValues);
@@ -79,7 +78,7 @@ public class KhoanThuChiDao extends SQLiteOpenHelper {
     public List<KhoanThuChi> getAll(){
         List<KhoanThuChi> khoanThuChis = new ArrayList<>();
         SQLiteDatabase database = getWritableDatabase();
-        Cursor cursor = database.query(TB_NAME, null, null, null,null,null, null);
+        Cursor cursor = database.query(TB_NAME, null, null, null,null,null, THOIGIAN);
         while (cursor.moveToNext()){
             int id = cursor.getInt(0);
             int idVi = cursor.getInt(1);
@@ -87,11 +86,11 @@ public class KhoanThuChiDao extends SQLiteOpenHelper {
             String ten = cursor.getString(3);
             boolean loai = false;
             if(cursor.getInt(5)== 1) loai = true;
-            String date = cursor.getString(6);
+            long date = cursor.getLong(6);
             Calendar calendar = Calendar.getInstance();
             try {
-                calendar.setTime(new SimpleDateFormat("dd/MM/yyyy").parse(date));
-            } catch (ParseException e) {
+                calendar.setTime(new Date(date));
+            } catch (Exception e) {
             }
             Float tien = cursor.getFloat(4);
             String ghichu = cursor.getString(7);
@@ -103,10 +102,10 @@ public class KhoanThuChiDao extends SQLiteOpenHelper {
         return khoanThuChis;
     }
 
-    public List<KhoanThuChi> getbyDate(String startDate, String endDate){
+    public List<KhoanThuChi> getbyDate(Long startDate, Long endDate){
         List<KhoanThuChi> khoanThuChis = new ArrayList<>();
         SQLiteDatabase database = getWritableDatabase();
-        Cursor cursor = database.query(TB_NAME, null, THOIGIAN + " >= ? AND " + THOIGIAN + " <= ?" , new String[]{startDate, endDate},null,null, null);
+        Cursor cursor = database.query(TB_NAME, null, THOIGIAN + " >= ? AND " + THOIGIAN + " <= ?" , new String[]{startDate.toString(), endDate.toString()},null,null, null);
         while (cursor.moveToNext()){
             int id = cursor.getInt(0);
             int idVi = cursor.getInt(1);
@@ -114,12 +113,9 @@ public class KhoanThuChiDao extends SQLiteOpenHelper {
             String ten = cursor.getString(3);
             boolean loai = false;
             if(cursor.getInt(5)== 1) loai = true;
-            String date = cursor.getString(6);
+            Long date = cursor.getLong(6);
             Calendar calendar = Calendar.getInstance();
-            try {
-                calendar.setTime(new SimpleDateFormat("dd/MM/yyyy").parse(date));
-            } catch (ParseException e) {
-            }
+            calendar.setTime(new Date(date));
             Float tien = cursor.getFloat(4);
             String ghichu = cursor.getString(7);
             ViTien viTien = viDao.getViById(idVi);
@@ -129,6 +125,37 @@ public class KhoanThuChiDao extends SQLiteOpenHelper {
         }
         return khoanThuChis;
     }
+
+    public List<KhoanThuChi> getbyDate(Long startDate, Long endDate, Integer loaitc){
+        List<KhoanThuChi> khoanThuChis = new ArrayList<>();
+        SQLiteDatabase database = getWritableDatabase();
+        Cursor cursor;
+        if(loaitc == 2){
+            cursor = database.query(TB_NAME, null, THOIGIAN + " >= ? AND " + THOIGIAN + " <= ?" , new String[]{startDate.toString(), endDate.toString()},null,null, null);
+        } else {
+            cursor = database.query(TB_NAME, null, THOIGIAN + " >= ? AND " + THOIGIAN + " <= ? AND " +LOAI + " =?" , new String[]{startDate.toString(), endDate.toString(), loaitc.toString()},null,null, null);
+        }
+        while (cursor.moveToNext()){
+            int id = cursor.getInt(0);
+            int idVi = cursor.getInt(1);
+            int idDm = cursor.getInt(2);
+            String ten = cursor.getString(3);
+            boolean loai = false;
+            if(cursor.getInt(5)== 1) loai = true;
+            Long date = cursor.getLong(6);
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(new Date(date));
+            Float tien = cursor.getFloat(4);
+            String ghichu = cursor.getString(7);
+            ViTien viTien = viDao.getViById(idVi);
+            DanhMucThuChi danhMucThuChi = danhMucThuChiDAO.getDmById(idDm);
+            KhoanThuChi khoanThuChi = new KhoanThuChi(id, viTien, danhMucThuChi, ten, tien, calendar, loai, ghichu);
+            khoanThuChis.add(khoanThuChi);
+        }
+        return khoanThuChis;
+    }
+
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {

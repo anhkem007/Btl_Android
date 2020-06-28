@@ -14,6 +14,7 @@ import android.widget.ListView;
 import android.widget.Spinner;
 
 import com.example.quanlychitieu.Data.ViDao;
+import com.example.quanlychitieu.MainActivity;
 import com.example.quanlychitieu.R;
 import com.example.quanlychitieu.adapter.ViAdapter;
 import com.example.quanlychitieu.model.ViTien;
@@ -30,7 +31,6 @@ public class FragmentWallet extends Fragment {
     ListView listvi;
     ViAdapter viAdapter;
     ImageView themvi;
-    ViDao viDao;
     View view;
 
 
@@ -39,9 +39,8 @@ public class FragmentWallet extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if(view != null) return view;
         view = inflater.inflate(R.layout.fragment_wallet, container, false);
-        viDao = new ViDao(getContext());
         anhxa(view);
-        viTienList = viDao.getAllVi();
+        viTienList = MainActivity.viDao.getAllVi();
         viAdapter = new ViAdapter(getContext(), R.layout.item_list_vi, viTienList);
         listvi.setAdapter(viAdapter);
         return view;
@@ -74,8 +73,8 @@ public class FragmentWallet extends Fragment {
                 Float sd = Float.parseFloat(sodu.getText().toString());
                 int loai = spinner.getSelectedItemPosition() + 1;
                 ViTien viTien = new ViTien(1, ten, sd, loai);
-                viDao.themVi(viTien);
-                viTienList = viDao.getAllVi();
+                MainActivity.viDao.themVi(viTien);
+                viTienList = MainActivity.viDao.getAllVi();
                 viAdapter.setViList(viTienList);
                 dialog.dismiss();
             }

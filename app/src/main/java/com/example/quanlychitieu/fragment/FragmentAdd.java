@@ -50,17 +50,14 @@ public class FragmentAdd extends Fragment {
     View view;
     Calendar calendar;
     List<DanhMucThuChi> danhMucThuChiList; // danh sach hang muc hien thi
-    DanhMucThuChiDAO danhMucThuChiDAO; // truy cap toi co so du lieu
-    KhoanThuChiDao khoanThuChiDao;
     ViDao viDao;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if(view != null) return view;
         view = inflater.inflate(R.layout.fragment_add, container, false);
-        danhMucThuChiDAO = new DanhMucThuChiDAO(getContext());
-        danhMucThuChiList = danhMucThuChiDAO.loadAllChi();
-        khoanThuChiDao = new KhoanThuChiDao(getContext());
+        danhMucThuChiList = MainActivity.danhMucThuChiDAO.loadAllChi();
+        MainActivity.khoanThuChiDao = new KhoanThuChiDao(getContext());
         viDao = new ViDao(getContext());
         anhXa(view);
         return view;
@@ -90,6 +87,27 @@ public class FragmentAdd extends Fragment {
         txttendanhmuc = view.findViewById(R.id.txttendanhmuc);
         ArrayAdapter arrayAdapter = new ArrayAdapter<String>(getContext(), R.layout.drop_simple, new String[]{getString(R.string.thu), getString(R.string.chi)});
         spnthuchi.setAdapter(arrayAdapter);
+        spnthuchi.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(spnthuchi.getSelectedItemPosition() == 0) {
+                    danhMucThuChiList = MainActivity.danhMucThuChiDAO.loadAllthu();
+                    khoanThuChi.setLoai(true);
+                }
+                else {
+                    danhMucThuChiList = MainActivity.danhMucThuChiDAO.loadAllChi();
+                    khoanThuChi.setLoai(false);
+                }
+                imgdanhmuc.setImageBitmap(danhMucThuChiList.get(0).getHinhanh());
+                txttendanhmuc.setText(danhMucThuChiList.get(0).getTen());
+                khoanThuChi.setDanhMucThuChi(danhMucThuChiList.get(0));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
         chondanhmuc = view.findViewById(R.id.chonhangmuc);
         chonVi = view.findViewById(R.id.chonvi);
         chondanhmuc.setOnClickListener(new View.OnClickListener() {
@@ -111,8 +129,7 @@ public class FragmentAdd extends Fragment {
                 khoanThuChi.setTen(edtTen.getText().toString());
                 khoanThuChi.setGhiChu(edtGhiChu.getText().toString());
                 khoanThuChi.setTien(Float.parseFloat(edtSoTien.getText().toString()));
-                khoanThuChi.setLoai(true);
-                khoanThuChiDao.themKhoanThuChi(khoanThuChi);
+                MainActivity.khoanThuChiDao.themKhoanThuChi(khoanThuChi);
                 MainActivity mainActivity = (MainActivity) getContext();
                 Toast.makeText(mainActivity,mainActivity.getResources().getString(R.string.themthanhcong), Toast.LENGTH_SHORT).show();
                 mainActivity.addFragmentAdd();
@@ -168,7 +185,6 @@ public class FragmentAdd extends Fragment {
                    imgVi.setImageResource(R.drawable.credit_card);
                } else imgVi.setImageResource(R.drawable.tien_mat);
                dialog.dismiss();
-
             }
         });
         dialog.show();

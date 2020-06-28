@@ -41,12 +41,23 @@ public class DanhMucThuChiDAO extends SQLiteOpenHelper {
         db.execSQL(CREATE_TB);
         db.execSQL(ViDao.CREATE_TB);
         db.execSQL(KhoanThuChiDao.CREATE_TB);
+
+        // khoi tao khoan thu
+        themDanhMuc(new DanhMucThuChi(context.getResources().getString(R.string.mucchi), BitmapFactory.decodeResource(context.getResources(),R.drawable.ic_sell), 1),db);
         themDanhMuc(new DanhMucThuChi(context.getResources().getString(R.string.chi_an_uong), BitmapFactory.decodeResource(context.getResources(),R.drawable.ic_noodle), 1),db);
         themDanhMuc(new DanhMucThuChi(context.getResources().getString(R.string.chi_dien_thoai), BitmapFactory.decodeResource(context.getResources(),R.drawable.ic_phone), 1),db);
         themDanhMuc(new DanhMucThuChi(context.getResources().getString(R.string.chi_quan_ao), BitmapFactory.decodeResource(context.getResources(),R.drawable.ic_cothes), 1),db);
         themDanhMuc(new DanhMucThuChi(context.getResources().getString(R.string.chi_mua_sam), BitmapFactory.decodeResource(context.getResources(),R.drawable.ic_shopping), 1),db);
         themDanhMuc(new DanhMucThuChi(context.getResources().getString(R.string.chi_hoc_tap), BitmapFactory.decodeResource(context.getResources(),R.drawable.ic_book), 1),db);
         themDanhMuc(new DanhMucThuChi(context.getResources().getString(R.string.chi_the_duc), BitmapFactory.decodeResource(context.getResources(),R.drawable.ic_fitness), 1),db);
+
+        // them khoan chi
+        themDanhMuc(new DanhMucThuChi(context.getResources().getString(R.string.mucthu), BitmapFactory.decodeResource(context.getResources(),R.drawable.thupng), 0),db);
+        themDanhMuc(new DanhMucThuChi(context.getResources().getString(R.string.thu_tien_luon), BitmapFactory.decodeResource(context.getResources(),R.drawable.thu_tien_luong), 0),db);
+        themDanhMuc(new DanhMucThuChi(context.getResources().getString(R.string.thu_ban_do), BitmapFactory.decodeResource(context.getResources(),R.drawable.thu_ban), 0),db);
+        themDanhMuc(new DanhMucThuChi(context.getResources().getString(R.string.thu_lai_xuat), BitmapFactory.decodeResource(context.getResources(),R.drawable.thu_dautu), 0),db);
+        themDanhMuc(new DanhMucThuChi(context.getResources().getString(R.string.thu_vay_no), BitmapFactory.decodeResource(context.getResources(),R.drawable.thu_divay), 0),db);
+
     }
 
     public void themDanhMuc(DanhMucThuChi danhMucThuChi) {
@@ -87,10 +98,25 @@ public class DanhMucThuChiDAO extends SQLiteOpenHelper {
         return resul;
     }
 
+    public List<DanhMucThuChi> loadAllthu(){
+        List<DanhMucThuChi> resul = new ArrayList<>();
+        SQLiteDatabase database = getWritableDatabase();
+        Cursor cursor = database.query(TB_NAME, null, LOAI + " = ?", new String[]{"0"}, null, null,null);
+        while (cursor.moveToNext()) {
+            int ma = cursor.getInt(0);
+            String ten = cursor.getString(1);
+            byte [] hinh = cursor.getBlob(2);
+            Bitmap hinhanh = BitmapFactory.decodeByteArray(hinh, 0, hinh.length);
+            DanhMucThuChi danhMucThuChi = new DanhMucThuChi(ma, ten, hinhanh, 1);
+            resul.add(danhMucThuChi);
+        }
+        return resul;
+    }
+
     public DanhMucThuChi getDmById(Integer id){
         DanhMucThuChi danhMucThuChi = new DanhMucThuChi();
         SQLiteDatabase database = getWritableDatabase();
-        Cursor cursor = database.query(TB_NAME, null, id + " = ?", new String[]{id.toString()}, null, null,null);
+        Cursor cursor = database.query(TB_NAME, null, ID + " = ?", new String[]{id.toString()}, null, null,null);
         if(cursor.moveToNext()){
             String ten = cursor.getString(1);
             int loai = cursor.getInt(3);
@@ -99,7 +125,6 @@ public class DanhMucThuChiDAO extends SQLiteOpenHelper {
             danhMucThuChi = new DanhMucThuChi(id, ten, hinhanh, loai);
         }
         return danhMucThuChi;
-
     }
 
     @Override
