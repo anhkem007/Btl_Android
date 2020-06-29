@@ -138,13 +138,70 @@
                         <ImageView
                             android:layout_width="50dp"
                             android:layout_height="50dp"
-                            android:src="@drawable/ic_sell"
+                            android:src="@drawable/graph"
+                            ></ImageView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="8dp"
+                            android:text="@string/taichinh"
+                            android:textColor="#000000"
+                            android:textSize="14dp"
+                            android:textStyle="bold"></TextView>
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:weightSum="2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:background="@drawable/background_baocao"
+                        android:layout_margin="10dp"
+                        android:orientation="vertical"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:layout_width="0dp"
+                        android:layout_height="140dp">
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/deposit"
                             ></ImageView>
                         <TextView
                             android:layout_margin="8dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/lsthuchi"
+                            android:text="@string/theodoivayno"
+                            android:textSize="14dp"
+                            android:textStyle="bold"
+                            android:textColor="#000000"
+                            >
+                        </TextView>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:background="@drawable/background_baocao"
+                        android:layout_margin="10dp"
+                        android:orientation="vertical"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:layout_width="0dp"
+                        android:layout_height="140dp">
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/calendar"
+                            ></ImageView>
+                        <TextView
+                            android:layout_margin="8dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/chuyendi"
                             android:textSize="14dp"
                             android:textStyle="bold"
                             android:textColor="#000000"
@@ -171,13 +228,13 @@
                         <ImageView
                             android:layout_width="50dp"
                             android:layout_height="50dp"
-                            android:src="@drawable/ic_sell"
+                            android:src="@drawable/presentation"
                             ></ImageView>
                         <TextView
                             android:layout_margin="8dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/lsthuchi"
+                            android:text="@string/phantich"
                             android:textSize="14dp"
                             android:textStyle="bold"
                             android:textColor="#000000"
@@ -196,71 +253,13 @@
                         <ImageView
                             android:layout_width="50dp"
                             android:layout_height="50dp"
-                            android:src="@drawable/ic_sell"
+                            android:src="@drawable/goal"
                             ></ImageView>
                         <TextView
                             android:layout_margin="8dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/lsthuchi"
-                            android:textSize="14dp"
-                            android:textStyle="bold"
-                            android:textColor="#000000"
-                            >
-                        </TextView>
-                    </LinearLayout>
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:weightSum="2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <LinearLayout
-                        android:background="@drawable/background_baocao"
-                        android:layout_margin="10dp"
-                        android:orientation="vertical"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:layout_width="0dp"
-                        android:layout_height="140dp">
-                        <ImageView
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:src="@drawable/ic_sell"
-                            ></ImageView>
-                        <TextView
-                            android:layout_margin="8dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/lsthuchi"
-                            android:textSize="14dp"
-                            android:textStyle="bold"
-                            android:textColor="#000000"
-                            >
-                        </TextView>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:background="@drawable/background_baocao"
-                        android:layout_margin="10dp"
-                        android:orientation="vertical"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:layout_width="0dp"
-                        android:layout_height="140dp">
-                        <ImageView
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:src="@drawable/ic_sell"
-                            ></ImageView>
-                        <TextView
-                            android:layout_margin="8dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/lsthuchi"
+                            android:text="@string/hanmuc"
                             android:textSize="14dp"
                             android:textStyle="bold"
                             android:textColor="#000000"

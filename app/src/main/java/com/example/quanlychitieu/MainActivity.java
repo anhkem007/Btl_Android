@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
     public String tagback;
     public String tagPresent;
     Fragment fragment;
-    public static List<DanhMucThuChi> danhMucThuChis;
+    public static List<DanhMucThuChi> danhMucThuChis, danhMucChi, danhMucThu;
 
 
     @Override
@@ -69,11 +69,14 @@ public class MainActivity extends AppCompatActivity {
         danhMucThuChiDAO = new DanhMucThuChiDAO(this);
         danhMucThuChiDAO.getWritableDatabase();
         danhMucThuChis = danhMucThuChiDAO.loadAll();
+        danhMucThu = danhMucThuChiDAO.loadAllthu();
+        danhMucChi = danhMucThuChiDAO.loadAllChi();
         viDao = new ViDao(this);
         khoanThuChiDao = new KhoanThuChiDao(this);
         try {
             long b = new SimpleDateFormat("dd/MM/yyyy").parse("1/6/2020").getTime();
             long a = new SimpleDateFormat("dd/MM/yyyy").parse("1/7/2020").getTime();
+            Date d = new SimpleDateFormat("dd/MM/yyyy").parse("1/7/2020");
             khoanThuChiDao.getDataset(b,a,1);
         } catch (Exception ex) {
 

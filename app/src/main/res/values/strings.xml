@@ -26,6 +26,11 @@
     <string name="phantichthoethang">Biểu đồ thu chi</string>
     <string name="phantichtheohm">Biểu đồ hạng mục</string>
     <string name="khoanmuc">Hạng mục</string>
+    <string name="taichinh">Tài chính hiện tại</string>
+    <string name="theodoivayno">Theo dõi vay nợ</string>
+    <string name="chuyendi">Chuyến đi/Sự kiện</string>
+    <string name="phantich">Phân tích tài chính</string>
+    <string name="hanmuc">Hạn mức chi tiêu</string>
 
     <!--    Mục chi -->
     <string name="mucchi">Chi tiền</string>

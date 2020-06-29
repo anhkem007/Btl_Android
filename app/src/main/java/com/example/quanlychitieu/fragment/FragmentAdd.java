@@ -56,8 +56,8 @@ public class FragmentAdd extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if(view != null) return view;
         view = inflater.inflate(R.layout.fragment_add, container, false);
-        danhMucThu = MainActivity.danhMucThuChiDAO.loadAllthu();
-        danhMucChi = MainActivity.danhMucThuChiDAO.loadAllChi();
+        danhMucThu = MainActivity.danhMucThu;
+        danhMucChi = MainActivity.danhMucChi;
         MainActivity.khoanThuChiDao = new KhoanThuChiDao(getContext());
         viDao = new ViDao(getContext());
         anhXa(view);
