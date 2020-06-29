@@ -84,5 +84,12 @@ public class ViDao extends SQLiteOpenHelper {
         return vi;
     }
 
+    public void upDateSodu(Float sodu, Integer id) {
+        SQLiteDatabase database = getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(SO_DU, sodu);
+        database.update(TB_NAME, contentValues, ID + " =? ", new String[]{id.toString()});
+    }
+
 
 }

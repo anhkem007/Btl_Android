@@ -2,13 +2,19 @@ package com.example.quanlychitieu.Data;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
+import com.example.quanlychitieu.MainActivity;
+import com.example.quanlychitieu.R;
 import com.example.quanlychitieu.model.DanhMucThuChi;
 import com.example.quanlychitieu.model.KhoanThuChi;
 import com.example.quanlychitieu.model.ViTien;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -47,14 +53,15 @@ public class KhoanThuChiDao extends SQLiteOpenHelper {
 
     public static int VERSION = 1;
 
-    DanhMucThuChiDAO danhMucThuChiDAO;
     ViDao viDao;
+
+    Context context;
 
 
     public KhoanThuChiDao(Context context) {
         super(context, DB_NAME, null, VERSION );
         viDao = new ViDao(context);
-        danhMucThuChiDAO = new DanhMucThuChiDAO(context);
+        this.context = context;
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -62,8 +69,19 @@ public class KhoanThuChiDao extends SQLiteOpenHelper {
 
     }
 
-    public void themKhoanThuChi(KhoanThuChi khoanThuChi) {
+    public boolean themKhoanThuChi(KhoanThuChi khoanThuChi) {
         SQLiteDatabase database = getWritableDatabase();
+        if(khoanThuChi.getLoai()) {
+            if(khoanThuChi.getViTien().getSodu().compareTo(khoanThuChi.getTien()) == -1 ) {
+                Toast.makeText(context, context.getResources().getString(R.string.sotienkhongdu), Toast.LENGTH_SHORT).show();
+                return false;
+            } else {
+                MainActivity.viDao.upDateSodu(khoanThuChi.getViTien().getSodu() - khoanThuChi.getTien(), khoanThuChi.getViTien().getId());
+            }
+
+        } else {
+            MainActivity.viDao.upDateSodu(khoanThuChi.getTien() + khoanThuChi.getViTien().getSodu(), khoanThuChi.getViTien().getId());
+        }
         ContentValues contentValues = new ContentValues();
         contentValues.put(IDVI, khoanThuChi.getViTien().getId());
         contentValues.put(IDDM, khoanThuChi.getDanhMucThuChi().getId());
@@ -73,6 +91,7 @@ public class KhoanThuChiDao extends SQLiteOpenHelper {
         contentValues.put(GHICHU, khoanThuChi.getGhiChu());
         contentValues.put(TIEN, khoanThuChi.getTien());
         database.insert(TB_NAME, null, contentValues);
+        return true;
     }
 
     public List<KhoanThuChi> getAll(){
@@ -95,8 +114,14 @@ public class KhoanThuChiDao extends SQLiteOpenHelper {
             Float tien = cursor.getFloat(4);
             String ghichu = cursor.getString(7);
             ViTien viTien = viDao.getViById(idVi);
-            DanhMucThuChi danhMucThuChi = danhMucThuChiDAO.getDmById(idDm);
-            KhoanThuChi khoanThuChi = new KhoanThuChi(id, viTien, danhMucThuChi, ten, tien, calendar, loai, ghichu);
+            DanhMucThuChi mucThuChi = new DanhMucThuChi();
+            for(DanhMucThuChi danhMucThuChi: MainActivity.danhMucThuChis){
+                if(danhMucThuChi.getId()==idDm) {
+                    mucThuChi = danhMucThuChi;
+                    break;
+                }
+            }
+            KhoanThuChi khoanThuChi = new KhoanThuChi(id, viTien, mucThuChi, ten, tien, calendar, loai, ghichu);
             khoanThuChis.add(khoanThuChi);
         }
         return khoanThuChis;
@@ -119,8 +144,14 @@ public class KhoanThuChiDao extends SQLiteOpenHelper {
             Float tien = cursor.getFloat(4);
             String ghichu = cursor.getString(7);
             ViTien viTien = viDao.getViById(idVi);
-            DanhMucThuChi danhMucThuChi = danhMucThuChiDAO.getDmById(idDm);
-            KhoanThuChi khoanThuChi = new KhoanThuChi(id, viTien, danhMucThuChi, ten, tien, calendar, loai, ghichu);
+            DanhMucThuChi mucThuChi = new DanhMucThuChi();
+            for(DanhMucThuChi danhMucThuChi: MainActivity.danhMucThuChis){
+                if(danhMucThuChi.getId()==idDm) {
+                    mucThuChi = danhMucThuChi;
+                    break;
+                }
+            }
+            KhoanThuChi khoanThuChi = new KhoanThuChi(id, viTien, mucThuChi, ten, tien, calendar, loai, ghichu);
             khoanThuChis.add(khoanThuChi);
         }
         return khoanThuChis;
@@ -148,11 +179,37 @@ public class KhoanThuChiDao extends SQLiteOpenHelper {
             Float tien = cursor.getFloat(4);
             String ghichu = cursor.getString(7);
             ViTien viTien = viDao.getViById(idVi);
-            DanhMucThuChi danhMucThuChi = danhMucThuChiDAO.getDmById(idDm);
-            KhoanThuChi khoanThuChi = new KhoanThuChi(id, viTien, danhMucThuChi, ten, tien, calendar, loai, ghichu);
+            DanhMucThuChi mucThuChi = new DanhMucThuChi();
+            for(DanhMucThuChi danhMucThuChi: MainActivity.danhMucThuChis){
+                if(danhMucThuChi.getId()==idDm) {
+                    mucThuChi = danhMucThuChi;
+                    break;
+                }
+            }
+            KhoanThuChi khoanThuChi = new KhoanThuChi(id, viTien, mucThuChi, ten, tien, calendar, loai, ghichu);
             khoanThuChis.add(khoanThuChi);
         }
         return khoanThuChis;
+    }
+
+    public List<PieEntry> getDataset(Long startDate, Long endDate, Integer loai){
+        List<PieEntry> pieEntries = new ArrayList<>();
+        SQLiteDatabase database = getWritableDatabase();
+        Cursor cursor = database.query(TB_NAME, new String[]{IDDM, "SUM("+ TIEN + ")"},
+                THOIGIAN + " >= ? AND " + THOIGIAN + " <= ? AND " +LOAI + " =?" ,
+                new String[]{startDate.toString(), endDate.toString(), loai.toString()},
+                IDDM,null, null);
+        while (cursor.moveToNext()){
+            Integer iddm = cursor.getInt(0);
+            String ten="";
+            for(DanhMucThuChi danhMucThuChi : MainActivity.danhMucThuChis){
+                if(iddm==danhMucThuChi.getId()) ten = danhMucThuChi.getTen();
+            }
+            Float tien = cursor.getFloat(1);
+            PieEntry pieEntry = new PieEntry(tien, ten);
+            pieEntries.add(pieEntry);
+        }
+        return pieEntries;
     }
 
 

@@ -11,17 +11,21 @@ import android.widget.TextView;
 import com.example.quanlychitieu.R;
 import com.example.quanlychitieu.model.ViTien;
 
+import java.text.NumberFormat;
 import java.util.List;
 
 public class ViAdapter extends BaseAdapter {
     Context context;
     Integer layout;
     List<ViTien> viList;
+    NumberFormat numberFormat;
+
 
     public ViAdapter(Context context, Integer layout, List<ViTien> viList) {
         this.context = context;
         this.layout = layout;
         this.viList = viList;
+        numberFormat = NumberFormat.getInstance();
     }
 
     public void setViList(List<ViTien> viList) {
@@ -52,7 +56,8 @@ public class ViAdapter extends BaseAdapter {
         TextView textView = convertView.findViewById(R.id.tenthe);
         textView.setText(viList.get(position).getTen());
         TextView tongtien = convertView.findViewById(R.id.tongtien);
-        tongtien.setText(viList.get(position).getSodu().toString() + "đ");
+        String str = numberFormat.format(viList.get(position).getSodu());
+        tongtien.setText(str + "đ");
         if(viList.get(position).getLoai() == 1) {
             imageView.setImageResource(R.drawable.tien_mat);
         }

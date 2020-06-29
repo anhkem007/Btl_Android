@@ -44,7 +44,6 @@ public class FragmentReportLstc extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        if(view != null) return view;
         view = inflater.inflate(R.layout.fragment_baocao_lichsuthuchi, container, false);
         anXa(view);
         khoanThuChiList = MainActivity.khoanThuChiDao.getbyDate(begin, end);

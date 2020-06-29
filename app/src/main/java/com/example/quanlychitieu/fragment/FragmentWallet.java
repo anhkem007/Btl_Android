@@ -37,7 +37,10 @@ public class FragmentWallet extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        if(view != null) return view;
+        if(view != null) {
+            viAdapter.setViList(viTienList);
+            return view;
+        }
         view = inflater.inflate(R.layout.fragment_wallet, container, false);
         anhxa(view);
         viTienList = MainActivity.viDao.getAllVi();

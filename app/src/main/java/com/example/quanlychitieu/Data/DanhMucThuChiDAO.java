@@ -112,6 +112,20 @@ public class DanhMucThuChiDAO extends SQLiteOpenHelper {
         }
         return resul;
     }
+    public List<DanhMucThuChi> loadAll(){
+        List<DanhMucThuChi> resul = new ArrayList<>();
+        SQLiteDatabase database = getWritableDatabase();
+        Cursor cursor = database.query(TB_NAME, null, null, null, null, null,null);
+        while (cursor.moveToNext()) {
+            int ma = cursor.getInt(0);
+            String ten = cursor.getString(1);
+            byte [] hinh = cursor.getBlob(2);
+            Bitmap hinhanh = BitmapFactory.decodeByteArray(hinh, 0, hinh.length);
+            DanhMucThuChi danhMucThuChi = new DanhMucThuChi(ma, ten, hinhanh, 1);
+            resul.add(danhMucThuChi);
+        }
+        return resul;
+    }
 
     public DanhMucThuChi getDmById(Integer id){
         DanhMucThuChi danhMucThuChi = new DanhMucThuChi();

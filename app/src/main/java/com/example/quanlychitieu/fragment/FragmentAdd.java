@@ -49,14 +49,15 @@ public class FragmentAdd extends Fragment {
     TextView txttendanhmuc, txttenvi;
     View view;
     Calendar calendar;
-    List<DanhMucThuChi> danhMucThuChiList; // danh sach hang muc hien thi
+    List<DanhMucThuChi> danhMucThuChiList, danhMucChi, danhMucThu; // danh sach hang muc hien thi
     ViDao viDao;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if(view != null) return view;
         view = inflater.inflate(R.layout.fragment_add, container, false);
-        danhMucThuChiList = MainActivity.danhMucThuChiDAO.loadAllChi();
+        danhMucThu = MainActivity.danhMucThuChiDAO.loadAllthu();
+        danhMucChi = MainActivity.danhMucThuChiDAO.loadAllChi();
         MainActivity.khoanThuChiDao = new KhoanThuChiDao(getContext());
         viDao = new ViDao(getContext());
         anhXa(view);
@@ -85,18 +86,20 @@ public class FragmentAdd extends Fragment {
         imgVi = view.findViewById(R.id.imgloaivi);
         txttenvi = view.findViewById(R.id.txttenvi);
         txttendanhmuc = view.findViewById(R.id.txttendanhmuc);
+
+        // tao su kien thu chi;
         ArrayAdapter arrayAdapter = new ArrayAdapter<String>(getContext(), R.layout.drop_simple, new String[]{getString(R.string.thu), getString(R.string.chi)});
         spnthuchi.setAdapter(arrayAdapter);
         spnthuchi.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if(spnthuchi.getSelectedItemPosition() == 0) {
-                    danhMucThuChiList = MainActivity.danhMucThuChiDAO.loadAllthu();
-                    khoanThuChi.setLoai(true);
+                if(position == 0) {
+                    danhMucThuChiList = danhMucThu;
+                    khoanThuChi.setLoai(false);
                 }
                 else {
-                    danhMucThuChiList = MainActivity.danhMucThuChiDAO.loadAllChi();
-                    khoanThuChi.setLoai(false);
+                    danhMucThuChiList = danhMucChi;
+                    khoanThuChi.setLoai(true);
                 }
                 imgdanhmuc.setImageBitmap(danhMucThuChiList.get(0).getHinhanh());
                 txttendanhmuc.setText(danhMucThuChiList.get(0).getTen());
@@ -108,6 +111,7 @@ public class FragmentAdd extends Fragment {
 
             }
         });
+
         chondanhmuc = view.findViewById(R.id.chonhangmuc);
         chonVi = view.findViewById(R.id.chonvi);
         chondanhmuc.setOnClickListener(new View.OnClickListener() {
@@ -122,6 +126,9 @@ public class FragmentAdd extends Fragment {
                 showPopupChonVi();
             }
         });
+
+
+        // luu khoan thu chi
         btnluu = view.findViewById(R.id.btnluukhoanthuchi);
         btnluu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -129,10 +136,13 @@ public class FragmentAdd extends Fragment {
                 khoanThuChi.setTen(edtTen.getText().toString());
                 khoanThuChi.setGhiChu(edtGhiChu.getText().toString());
                 khoanThuChi.setTien(Float.parseFloat(edtSoTien.getText().toString()));
-                MainActivity.khoanThuChiDao.themKhoanThuChi(khoanThuChi);
-                MainActivity mainActivity = (MainActivity) getContext();
-                Toast.makeText(mainActivity,mainActivity.getResources().getString(R.string.themthanhcong), Toast.LENGTH_SHORT).show();
-                mainActivity.addFragmentAdd();
+                if(MainActivity.khoanThuChiDao.themKhoanThuChi(khoanThuChi)){
+                    MainActivity mainActivity = (MainActivity) getContext();
+                    Toast.makeText(mainActivity,mainActivity.getResources().getString(R.string.themthanhcong), Toast.LENGTH_SHORT).show();
+                    FragmentWallet.viTienList = MainActivity.viDao.getAllVi();
+                    mainActivity.addFragmentAdd();
+                }
+
             }
         });
     }

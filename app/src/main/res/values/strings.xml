@@ -22,6 +22,10 @@
     <string name="ghichu">Ghi chú: </string>
     <string name="dong">Đóng</string>
     <string name="nhapdungtime">Nhập đúng đinh dạng thời gian!</string>
+    <string name="sotienkhongdu">Số tiền của ví không đủ!</string>
+    <string name="phantichthoethang">Biểu đồ thu chi</string>
+    <string name="phantichtheohm">Biểu đồ hạng mục</string>
+    <string name="khoanmuc">Hạng mục</string>
 
     <!--    Mục chi -->
     <string name="mucchi">Chi tiền</string>

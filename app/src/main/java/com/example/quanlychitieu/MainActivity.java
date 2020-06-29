@@ -27,9 +27,11 @@ import com.example.quanlychitieu.Data.ViDao;
 import com.example.quanlychitieu.fragment.FragmentAdd;
 import com.example.quanlychitieu.fragment.FragmentHome;
 import com.example.quanlychitieu.fragment.FragmentReport;
+import com.example.quanlychitieu.fragment.FragmentReportHm;
 import com.example.quanlychitieu.fragment.FragmentReportLstc;
 import com.example.quanlychitieu.fragment.FragmentUser;
 import com.example.quanlychitieu.fragment.FragmentWallet;
+import com.example.quanlychitieu.model.DanhMucThuChi;
 import com.example.quanlychitieu.model.KhoanThuChi;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
@@ -42,6 +44,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.security.MessageDigest;
 import java.sql.PreparedStatement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -49,13 +52,14 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
-    Fragment home, wallet, user, add, report, fragmentlstc;
+    Fragment home, wallet, user, add, report, fragmentlstc, fragmenthm;
     public static DanhMucThuChiDAO danhMucThuChiDAO;
     public static ViDao viDao;
     public static KhoanThuChiDao khoanThuChiDao;
     public String tagback;
     public String tagPresent;
     Fragment fragment;
+    public static List<DanhMucThuChi> danhMucThuChis;
 
 
     @Override
@@ -64,10 +68,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         danhMucThuChiDAO = new DanhMucThuChiDAO(this);
         danhMucThuChiDAO.getWritableDatabase();
+        danhMucThuChis = danhMucThuChiDAO.loadAll();
         viDao = new ViDao(this);
         khoanThuChiDao = new KhoanThuChiDao(this);
+        try {
+            long b = new SimpleDateFormat("dd/MM/yyyy").parse("1/6/2020").getTime();
+            long a = new SimpleDateFormat("dd/MM/yyyy").parse("1/7/2020").getTime();
+            khoanThuChiDao.getDataset(b,a,1);
+        } catch (Exception ex) {
+
+        }
 
         fragmentlstc = new FragmentReportLstc();
+        fragmenthm = new FragmentReportHm();
         home = new FragmentHome();
         add = new FragmentAdd();
         user = new FragmentUser();
@@ -110,5 +123,8 @@ public class MainActivity extends AppCompatActivity {
     }
     public void addFragmentLsthuchi(){
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, fragmentlstc, fragmentlstc.getClass().getSimpleName()).hide(fragment).show(fragmentlstc).addToBackStack(fragment.getClass().getSimpleName()).commit();
+    }
+    public void addFragmentbcHangmuc(){
+        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, fragmenthm, fragmenthm.getClass().getSimpleName()).hide(fragment).show(fragmenthm).addToBackStack(fragment.getClass().getSimpleName()).commit();
     }
 }

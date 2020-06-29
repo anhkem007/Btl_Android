@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.example.quanlychitieu.R;
 import com.example.quanlychitieu.model.KhoanThuChi;
 
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
@@ -19,11 +20,13 @@ public class KhoanThuChiAdapter extends BaseAdapter {
     Context context;
     int layout;
     List<KhoanThuChi> khoanThuChiList;
+    NumberFormat numberFormat;
 
     public KhoanThuChiAdapter(Context context, int layout, List<KhoanThuChi> khoanThuChiList) {
         this.context = context;
         this.layout = layout;
         this.khoanThuChiList = khoanThuChiList;
+        numberFormat = NumberFormat.getInstance();
     }
 
     public void setKhoanThuChiList(List<KhoanThuChi> khoanThuChiList) {
@@ -56,7 +59,8 @@ public class KhoanThuChiAdapter extends BaseAdapter {
         TextView sotien = convertView.findViewById(R.id.sotien2);
         imageView.setImageBitmap(khoanThuChiList.get(position).getDanhMucThuChi().getHinhanh());
         ten.setText(khoanThuChiList.get(position).getTen());
-        sotien.setText(khoanThuChiList.get(position).getTien().toString() + "đ");
+        String str = numberFormat.format(khoanThuChiList.get(position).getTien());
+        sotien.setText(str + "đ");
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
         ngay.setText(simpleDateFormat.format(khoanThuChiList.get(position).getThoigian().getTime()).toString());
         if(khoanThuChiList.get(position).getLoai()) convertView.setBackgroundColor(context.getResources().getColor(R.color.thu));
