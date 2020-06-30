@@ -103,6 +103,7 @@
                     android:layout_height="wrap_content">
 
                     <LinearLayout
+                        android:id="@+id/bdtc"
                         android:background="@drawable/background_baocao"
                         android:layout_margin="10dp"
                         android:orientation="vertical"

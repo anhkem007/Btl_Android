@@ -13,6 +13,7 @@ import com.example.quanlychitieu.R;
 import com.example.quanlychitieu.model.DanhMucThuChi;
 import com.example.quanlychitieu.model.KhoanThuChi;
 import com.example.quanlychitieu.model.ViTien;
+import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 
@@ -192,6 +193,8 @@ public class KhoanThuChiDao extends SQLiteOpenHelper {
         return khoanThuChis;
     }
 
+
+    // lay du lieu de ve bieu do danh muc
     public List<PieEntry> getDataset(Long startDate, Long endDate, Integer loai){
         List<PieEntry> pieEntries = new ArrayList<>();
         SQLiteDatabase database = getWritableDatabase();
@@ -210,6 +213,36 @@ public class KhoanThuChiDao extends SQLiteOpenHelper {
             pieEntries.add(pieEntry);
         }
         return pieEntries;
+    }
+
+    public List<BarEntry> getDatasetBarChart(int loai){
+        List<BarEntry> barEntries = new ArrayList<>();
+        for(int i=1; i<=12; i++){
+            barEntries.add(new BarEntry(i,getTongtien(i,loai)));
+        }
+        return barEntries;
+
+    }
+    public Float getTongtien(Integer thang, Integer loai){
+        Float tong = 0f;
+        String begin = "1/"+thang.toString()+"/2020";
+        thang++;
+        String end ="1/"+thang.toString()+"/2020";
+        Long b = new Long(0);
+        Long e = new Long(0);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            b = simpleDateFormat.parse(begin).getTime();
+            e = simpleDateFormat.parse(end).getTime();
+        } catch (Exception ex){
+
+        }
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor cursor = database.query(TB_NAME, new String[]{"SUM("+TIEN+")"},
+                THOIGIAN + " >= ? AND " + THOIGIAN + " <= ? AND " +LOAI + " =?",new String[]{b.toString(), e.toString(),loai.toString()},
+                null, null ,null);
+        if(cursor.moveToNext()) tong = cursor.getFloat(0);
+        return tong;
     }
 
 

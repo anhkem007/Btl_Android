@@ -27,6 +27,7 @@ import com.example.quanlychitieu.Data.ViDao;
 import com.example.quanlychitieu.fragment.FragmentAdd;
 import com.example.quanlychitieu.fragment.FragmentHome;
 import com.example.quanlychitieu.fragment.FragmentReport;
+import com.example.quanlychitieu.fragment.FragmentReportBdtc;
 import com.example.quanlychitieu.fragment.FragmentReportHm;
 import com.example.quanlychitieu.fragment.FragmentReportLstc;
 import com.example.quanlychitieu.fragment.FragmentUser;
@@ -52,7 +53,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
-    Fragment home, wallet, user, add, report, fragmentlstc, fragmenthm;
+    Fragment home, wallet, user, add, report, fragmentlstc, fragmenthm, fragmentBdtc;
     public static DanhMucThuChiDAO danhMucThuChiDAO;
     public static ViDao viDao;
     public static KhoanThuChiDao khoanThuChiDao;
@@ -83,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         fragmentlstc = new FragmentReportLstc();
+        fragmentBdtc = new FragmentReportBdtc();
         fragmenthm = new FragmentReportHm();
         home = new FragmentHome();
         add = new FragmentAdd();
@@ -125,9 +127,12 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, add).commit();
     }
     public void addFragmentLsthuchi(){
-        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, fragmentlstc, fragmentlstc.getClass().getSimpleName()).hide(fragment).show(fragmentlstc).addToBackStack(fragment.getClass().getSimpleName()).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, new FragmentReportLstc(), fragmentlstc.getClass().getSimpleName()).hide(fragment).show(fragmentlstc).addToBackStack(fragment.getClass().getSimpleName()).commit();
     }
     public void addFragmentbcHangmuc(){
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, fragmenthm, fragmenthm.getClass().getSimpleName()).hide(fragment).show(fragmenthm).addToBackStack(fragment.getClass().getSimpleName()).commit();
+    }
+    public void addFragmentbdtc(){
+        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, fragmentBdtc, fragmentBdtc.getClass().getSimpleName()).hide(fragment).show(fragmentBdtc).addToBackStack(fragment.getClass().getSimpleName()).commit();
     }
 }
