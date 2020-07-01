@@ -136,7 +136,9 @@ public class FragmentAdd extends Fragment {
                 khoanThuChi.setTen(edtTen.getText().toString());
                 khoanThuChi.setGhiChu(edtGhiChu.getText().toString());
                 khoanThuChi.setTien(Float.parseFloat(edtSoTien.getText().toString()));
-                if(MainActivity.khoanThuChiDao.themKhoanThuChi(khoanThuChi)){
+                if(khoanThuChi.getViTien() == null){
+                    Toast.makeText(getContext(),getContext().getResources().getString(R.string.chuachonloaivi), Toast.LENGTH_SHORT).show();
+                } else if(MainActivity.khoanThuChiDao.themKhoanThuChi(khoanThuChi)){
                     MainActivity mainActivity = (MainActivity) getContext();
                     Toast.makeText(mainActivity,mainActivity.getResources().getString(R.string.themthanhcong), Toast.LENGTH_SHORT).show();
                     FragmentWallet.viTienList = MainActivity.viDao.getAllVi();
@@ -184,7 +186,7 @@ public class FragmentAdd extends Fragment {
         if(FragmentWallet.viTienList == null) {
             FragmentWallet.viTienList = viDao.getAllVi();
         }
-        ViAdapter viAdapter = new ViAdapter(getContext(), R.layout.item_list_vi, FragmentWallet.viTienList);
+        ViAdapter viAdapter = new ViAdapter(getContext(), R.layout.item_list_vi_2, FragmentWallet.viTienList);
         listView.setAdapter(viAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

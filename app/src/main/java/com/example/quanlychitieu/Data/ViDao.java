@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.ImageView;
 
 import com.example.quanlychitieu.model.ViTien;
 
@@ -19,11 +20,14 @@ public class ViDao extends SQLiteOpenHelper {
     public static final String SO_DU = "so_du";
     public static final String TEN = "ten";
     public static final String LOAI = "loai";
+    public static final String TRANG_THAI = "trangthai";
+
     public static final String CREATE_TB = "CREATE TABLE " + TB_NAME + "( " +
                                             ID + " INTEGER PRIMARY KEY AUTOINCREMENT ," +
                                             TEN + " TEXT, " +
                                             SO_DU + " REAL ," +
-                                            LOAI + " INTEGER )";
+                                            LOAI + " INTEGER, " +
+                                            TRANG_THAI + " INTEGER )";
 
 
 
@@ -55,13 +59,14 @@ public class ViDao extends SQLiteOpenHelper {
         contentValues.put(TEN, viTien.getTen());
         contentValues.put(SO_DU, viTien.getSodu());
         contentValues.put(LOAI, viTien.getLoai());
+        contentValues.put(TRANG_THAI, 1);
         database.insert(TB_NAME, null, contentValues);
     }
 
     public List<ViTien> getAllVi(){
         SQLiteDatabase database = getWritableDatabase();
         List<ViTien> listvi = new ArrayList<>();
-        Cursor cursor = database.query(TB_NAME, null, null, null, null, null ,null);
+        Cursor cursor = database.query(TB_NAME, null, TRANG_THAI + " = ? ", new String[]{"1"}, null, null ,null);
         while (cursor.moveToNext()){
             int id = cursor.getInt(0);
             String ten = cursor.getString(1);
@@ -82,6 +87,12 @@ public class ViDao extends SQLiteOpenHelper {
             vi = new ViTien(id, ten, sodu, loai);
         }
         return vi;
+    }
+    public void xoaVi(Integer id){
+        SQLiteDatabase database = getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(TRANG_THAI, 0);
+        database.update(TB_NAME, contentValues, ID + " = ? ", new String[]{id.toString()});
     }
 
     public void upDateSodu(Float sodu, Integer id) {

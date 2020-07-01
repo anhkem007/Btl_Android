@@ -5,6 +5,7 @@ public class ViTien {
     private String ten;
     private Float sodu;
     private Integer loai; // 1 vi tien, 2 the,
+    private Integer trangthai;
 
     public Integer getId() {
         return id;

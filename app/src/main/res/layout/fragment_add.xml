@@ -120,7 +120,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_weight="8"
-                        android:text="Thẻ ngân hàng"
+                        android:text="@string/chonvi2"
                         android:textColor="@color/design_default_color_on_secondary"
                         android:textSize="20sp"></TextView>
 

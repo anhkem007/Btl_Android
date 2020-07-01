@@ -39,7 +39,8 @@ public class FragmentReportBdtc  extends Fragment {
         return view;
     }
     public void anhXa(View view){
-
+        barChart = (BarChart) view.findViewById(R.id.barchart);
+        barChart.getDescription().setText(getContext().getString(R.string.baocaothuchitheothang));
         radioGroup = view.findViewById(R.id.ragroup);
 
         // loc theo muc thu chi
@@ -61,12 +62,12 @@ public class FragmentReportBdtc  extends Fragment {
             }
         });
 
-        barChart = (BarChart) view.findViewById(R.id.barchart);
+
         dataChange();
     }
 
     public void dataChange(){
-        BarDataSet dataSet = new BarDataSet(barEntries, "data");
+        BarDataSet dataSet = new BarDataSet(barEntries, getContext().getString(R.string.thang));
         dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
         BarData data = new BarData(dataSet);
         barChart.setData(data);

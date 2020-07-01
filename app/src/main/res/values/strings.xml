@@ -7,7 +7,7 @@
     <string name="vi">Ví</string>
     <string name="qltc">Quản tài chính</string>
     <string name="baocaotc">Báo cáo tài chính</string>
-    <string name="tongtien">Tổng tiền</string>
+    <string name="tongtien">Tổng tiền: </string>
     <string name="themthanhcong">Thêm thành công!</string>
     <string name="lsthuchi">Lịch sử thu chi</string>
     <string name="ngaybd">Bắt đầu: </string>
@@ -31,6 +31,23 @@
     <string name="chuyendi">Chuyến đi/Sự kiện</string>
     <string name="phantich">Phân tích tài chính</string>
     <string name="hanmuc">Hạn mức chi tiêu</string>
+    <string name="chuyenkhoan">Chuyển khoản</string>
+    <string name="chonvi">Chọn ví:</string>
+    <string name="sotien2">Số tiền:</string>
+    <string name="xacnhan">Xác nhận</string>
+    <string name="huy">Hủy</string>
+    <string name="denvi">Đến ví:</string>
+    <string name="tuvi">Từ ví:</string>
+    <string name="chuachonloaivi">Chưa chọn ví!</string>
+    <string name="chonvi2">Chọn ví</string>
+    <string name="tenvi2">Tên ví</string>
+    <string name="themvi">Thêm ví</string>
+    <string name="loaitienmat">Tiền mặt</string>
+    <string name="loaithe">Thẻ ngân hàng</string>
+    <string name="suasodu">Sửa số dư</string>
+    <string name="xacnhanxoa">Xác nhận xóa ví: </string>
+    <string name="baocaothuchitheothang">Năm 2020</string>
+    <string name="thang">Tháng</string>
 
     <!--    Mục chi -->
     <string name="mucchi">Chi tiền</string>
@@ -50,6 +67,7 @@
     <string name="thu_ban_do">Bán đồ</string>
     <string name="thu_vay_no">Vay nợ</string>
     <string name="thu_lai_xuat">Lãi xuất</string>
+
 
 
 </resources>

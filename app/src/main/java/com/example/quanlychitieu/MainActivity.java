@@ -53,7 +53,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
-    Fragment home, wallet, user, add, report, fragmentlstc, fragmenthm, fragmentBdtc;
+    public  Fragment home, wallet, user, add, report, fragmentlstc, fragmenthm, fragmentBdtc;
     public static DanhMucThuChiDAO danhMucThuChiDAO;
     public static ViDao viDao;
     public static KhoanThuChiDao khoanThuChiDao;

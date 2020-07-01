@@ -6,12 +6,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.example.quanlychitieu.Data.ViDao;
 import com.example.quanlychitieu.MainActivity;
@@ -19,6 +21,8 @@ import com.example.quanlychitieu.R;
 import com.example.quanlychitieu.adapter.ViAdapter;
 import com.example.quanlychitieu.model.ViTien;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,6 +36,9 @@ public class FragmentWallet extends Fragment {
     ViAdapter viAdapter;
     ImageView themvi;
     View view;
+    TextView txtTongtien;
+    public static Float tongtien;
+    NumberFormat numberFormat;
 
 
     @Nullable
@@ -39,17 +46,21 @@ public class FragmentWallet extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if(view != null) {
             viAdapter.setViList(viTienList);
+            setTongTien();
             return view;
         }
         view = inflater.inflate(R.layout.fragment_wallet, container, false);
-        anhxa(view);
         viTienList = MainActivity.viDao.getAllVi();
+        numberFormat = numberFormat.getNumberInstance();
+        anhxa(view);
         viAdapter = new ViAdapter(getContext(), R.layout.item_list_vi, viTienList);
         listvi.setAdapter(viAdapter);
         return view;
     }
 
     public void anhxa(View view) {
+        txtTongtien = view.findViewById(R.id.txttongtien);
+        setTongTien();
         themvi = view.findViewById(R.id.themvi);
         themvi.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,9 +77,24 @@ public class FragmentWallet extends Fragment {
         final EditText edttenvi = dialog.findViewById(R.id.edttenvi);
         final EditText sodu = dialog.findViewById(R.id.edtsodu);
         final Spinner spinner = dialog.findViewById(R.id.spnloaivi);
-        spinner.setAdapter(new ArrayAdapter<>(getContext(), R.layout.support_simple_spinner_dropdown_item, new String[]{"vi","the ngan hang"}));
+        final ImageView imageLoai = dialog.findViewById(R.id.imgloaivi);
+        spinner.setAdapter(new ArrayAdapter<>(getContext(), R.layout.support_simple_spinner_dropdown_item, new String[]{getContext().getString(R.string.loaitienmat),getContext().getString(R.string.loaithe)}));
         Button btnLuu = (Button) dialog.findViewById(R.id.btnluu);
         Button btnhuy = (Button) dialog.findViewById(R.id.btnthoat);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(position == 0 ){
+                    imageLoai.setImageResource(R.drawable.tien_mat);
+                } else imageLoai.setImageResource(R.drawable.credit_card);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
         btnLuu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,6 +105,7 @@ public class FragmentWallet extends Fragment {
                 MainActivity.viDao.themVi(viTien);
                 viTienList = MainActivity.viDao.getAllVi();
                 viAdapter.setViList(viTienList);
+                setTongTien();
                 dialog.dismiss();
             }
         });
@@ -89,6 +116,13 @@ public class FragmentWallet extends Fragment {
             }
         });
         dialog.show();
-
+    }
+    public void setTongTien(){
+        tongtien = 0f;
+        for(ViTien viTien : viTienList){
+            tongtien = tongtien + viTien.getSodu();
+        }
+        String str = numberFormat.format(tongtien) + "đ";
+        txtTongtien.setText(str);
     }
 }

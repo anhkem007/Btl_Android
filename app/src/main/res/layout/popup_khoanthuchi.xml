@@ -160,6 +160,7 @@
 
     <Button
         android:id="@+id/popupbtnclose"
+        android:background="@drawable/button2"
         android:text="@string/dong"
         android:layout_margin="10dp"
         android:layout_gravity="center"

@@ -8,23 +8,37 @@
         android:textSize="24dp"
         android:layout_gravity="center"
         android:layout_margin="10dp"
-        android:text="@string/themvi"
+        android:text="@string/suasodu"
         android:layout_width="wrap_content"
         android:textColor="#000000"
         android:layout_height="wrap_content">
 
     </TextView>
-    <EditText
-        android:background="@drawable/edittext"
-        android:layout_gravity="center"
-        android:id="@+id/edttenvi"
-        android:hint="@string/tenvi2"
-        android:layout_margin="20dp"
-        android:inputType="textPersonName"
-        android:layout_width="250dp"
-        android:layout_height="50dp">
 
-    </EditText>
+    <LinearLayout android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_margin="10dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tenvi2"
+            android:textStyle="bold"
+            android:layout_marginRight="10dp"
+            android:textColor="#000000"
+            ></TextView>
+        <TextView
+            android:id="@+id/tenvichuyen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="tenvi"
+            android:layout_marginRight="10dp"
+            android:textColor="#000000"
+            ></TextView>
+
+    </LinearLayout>
+
     <EditText
         android:textAlignment="viewEnd"
         android:layout_gravity="center"
@@ -39,28 +53,6 @@
         android:layout_height="50dp"
         tools:ignore="RtlCompat">
     </EditText>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:layout_height="wrap_content">
-        <Spinner
-            android:id="@+id/spnloaivi"
-            android:layout_margin="10dp"
-            android:layout_width="130dp"
-            android:layout_height="50dp">
-        </Spinner>
-        <ImageView
-            android:id="@id/imgloaivi"
-            android:layout_margin="10dp"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/tien_mat"
-            >
-
-        </ImageView>
-
-    </LinearLayout>
 
     <LinearLayout
         android:layout_margin="10dp"
