@@ -68,10 +68,10 @@ public class ViAdapter extends BaseAdapter {
         TextView tongtien = convertView.findViewById(R.id.tongtien);
         String str = numberFormat.format(viList.get(position).getSodu());
         tongtien.setText(str + "đ");
-        if(viList.get(position).getLoai() == 1) {
+        if (viList.get(position).getLoai() == 1) {
             imageView.setImageResource(R.drawable.tien_mat);
         }
-        if(viList.get(position).getLoai() == 2) {
+        if (viList.get(position).getLoai() == 2) {
             imageView.setImageResource(R.drawable.credit_card);
         }
 
