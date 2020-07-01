@@ -85,6 +85,8 @@ public class ViAdapter extends BaseAdapter {
                     dialog.setContentView(R.layout.popup_sua_so_du);
                     final EditText editText = dialog.findViewById(R.id.edtsodu);
                     editText.setText(viList.get(position).getSodu().toString());
+                    TextView editText1 = dialog.findViewById(R.id.tenvichuyen);
+                    editText1.setText(viList.get(position).getTen());
                     dialog.show();
                     Button huy = dialog.findViewById(R.id.btnthoat);
                     Button xacnhan = dialog.findViewById(R.id.btnluu);
