@@ -53,6 +53,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
+    public static CallbackManager callbackManager;
     public  Fragment home, wallet, user, add, report, fragmentlstc, fragmenthm, fragmentBdtc;
     public static DanhMucThuChiDAO danhMucThuChiDAO;
     public static ViDao viDao;
@@ -74,14 +75,8 @@ public class MainActivity extends AppCompatActivity {
         danhMucChi = danhMucThuChiDAO.loadAllChi();
         viDao = new ViDao(this);
         khoanThuChiDao = new KhoanThuChiDao(this);
-        try {
-            long b = new SimpleDateFormat("dd/MM/yyyy").parse("1/6/2020").getTime();
-            long a = new SimpleDateFormat("dd/MM/yyyy").parse("1/7/2020").getTime();
-            Date d = new SimpleDateFormat("dd/MM/yyyy").parse("1/7/2020");
-            khoanThuChiDao.getDataset(b,a,1);
-        } catch (Exception ex) {
 
-        }
+        callbackManager = CallbackManager.Factory.create();
 
         fragmentlstc = new FragmentReportLstc();
         fragmentBdtc = new FragmentReportBdtc();
@@ -134,5 +129,12 @@ public class MainActivity extends AppCompatActivity {
     }
     public void addFragmentbdtc(){
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, fragmentBdtc, fragmentBdtc.getClass().getSimpleName()).hide(fragment).show(fragmentBdtc).addToBackStack(fragment.getClass().getSimpleName()).commit();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        callbackManager.onActivityResult(requestCode, resultCode, data);
+        super.onActivityResult(requestCode, resultCode, data);
+
     }
 }
