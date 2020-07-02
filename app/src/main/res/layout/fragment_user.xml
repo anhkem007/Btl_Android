@@ -35,25 +35,75 @@
                 android:orientation="vertical" >
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="170dp"
+                    android:layout_height="wrap_content"
                     android:background="#FFFFFF"
                     android:layout_marginBottom="15dp"
                     android:orientation="vertical">
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:src="@drawable/ic_sell"
-                        android:layout_marginTop="30dp"
-                        android:layout_gravity="center">
-                    </ImageView>
                     <TextView
+                        android:layout_marginTop="8dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:textSize="20dp"
+                        android:text="Thông tin"></TextView>
+                    <com.facebook.login.widget.ProfilePictureView
+
+                        android:id="@+id/image"
+
+                        android:layout_gravity="center"
+
+                        android:layout_width="70dp"
+
+                        android:layout_height="70dp"
+
+                        android:layout_centerInParent="true" />
+                    <TextView
+                        android:id="@+id/ten"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:gravity="center"
                         android:textSize="20dp"
-                        android:text="Thanh Nam">
+                        >
                     </TextView>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:src="@drawable/mail"
+                            android:layout_width="30dp"
+                            android:layout_marginLeft="40dp"
+                            android:layout_height="30dp">
+                        </ImageView>
+                        <TextView
+                            android:id="@+id/mail"
+                            android:text="mail"
+                            android:layout_gravity="center"
+                            android:layout_margin="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"></TextView>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:src="@drawable/birthday"
+                            android:layout_width="30dp"
+                            android:layout_marginLeft="40dp"
+                            android:layout_height="30dp">
+                        </ImageView>
+                        <TextView
+                            android:id="@+id/birday"
+                            android:text="ns"
+                            android:layout_gravity="center"
+                            android:layout_margin="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"></TextView>
+
+                    </LinearLayout>
+
 
                     <com.facebook.login.widget.LoginButton
                         android:id="@+id/login_button"
@@ -62,6 +112,7 @@
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="30dp"
                         android:layout_marginBottom="30dp" />
+
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -88,14 +139,14 @@
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
                                 android:layout_gravity="center"
-                                ></ImageView>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="10dp"
-                                android:textSize="15dp"
-                                android:text="Hạn mức chi">
-                            </TextView>
+                                android:src="@drawable/ic_hanchi"></ImageView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:textSize="15dp"
+                            android:text="Hạn mức chi">
+                        </TextView>
                         </LinearLayout>
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -105,14 +156,14 @@
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
                                 android:layout_gravity="center"
-                               ></ImageView>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="10dp"
-                                android:textSize="15dp"
-                                android:text="Hạng mục thu/chi">
-                            </TextView>
+                                android:src="@drawable/ic_thuchi"></ImageView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:textSize="15dp"
+                            android:text="Hạng mục thu/chi">
+                        </TextView>
                         </LinearLayout>
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -121,14 +172,15 @@
                             <ImageView
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
-                                android:layout_gravity="center"></ImageView>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="10dp"
-                                android:textSize="15dp"
-                                android:text="Ghi chép mẫu">
-                            </TextView>
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_template"></ImageView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:textSize="15dp"
+                            android:text="Ghi chép mẫu">
+                        </TextView>
                         </LinearLayout>
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -137,14 +189,15 @@
                             <ImageView
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
-                                android:layout_gravity="center"></ImageView>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="10dp"
-                                android:textSize="15dp"
-                                android:text="Danh sách mua sắm">
-                            </TextView>
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_dsshoping"></ImageView>
+                        <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:textSize="15dp"
+                        android:text="Danh sách mua sắm">
+                    </TextView>
                         </LinearLayout>
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -153,14 +206,15 @@
                             <ImageView
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
-                                android:layout_gravity="center"></ImageView>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="10dp"
-                                android:textSize="15dp"
-                                android:text="Ghi chép định kỳ">
-                            </TextView>
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_write"></ImageView>
+                        <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:textSize="15dp"
+                        android:text="Ghi chép định kỳ">
+                    </TextView>
                         </LinearLayout>
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -169,14 +223,15 @@
                             <ImageView
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
-                                android:layout_gravity="center"></ImageView>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="10dp"
-                                android:textSize="15dp"
-                                android:text="Dự thu/Dự chi">
-                            </TextView>
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_duthuchi"></ImageView>
+                        <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:textSize="15dp"
+                        android:text="Dự thu/Dự chi">
+                    </TextView>
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
@@ -204,14 +259,15 @@
                             <ImageView
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
-                                android:layout_gravity="center"></ImageView>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="10dp"
-                                android:textSize="15dp"
-                                android:text="Chuyến đi, sự kiện của nhóm">
-                            </TextView>
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_tour"></ImageView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:textSize="15dp"
+                            android:text="Chuyến đi, sự kiện của nhóm">
+                        </TextView>
                         </LinearLayout>
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -220,14 +276,15 @@
                             <ImageView
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
-                                android:layout_gravity="center"></ImageView>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="10dp"
-                                android:textSize="15dp"
-                                android:text="Xuất khẩu dữ liệu">
-                            </TextView>
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_tranfer"></ImageView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:textSize="15dp"
+                            android:text="Xuất khẩu dữ liệu">
+                        </TextView>
                         </LinearLayout>
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -236,14 +293,15 @@
                             <ImageView
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
-                                android:layout_gravity="center"></ImageView>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="10dp"
-                                android:textSize="15dp"
-                                android:text="Widget">
-                            </TextView>
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_widget"></ImageView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:textSize="15dp"
+                            android:text="Widget">
+                        </TextView>
                         </LinearLayout>
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -252,14 +310,15 @@
                             <ImageView
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
-                                android:layout_gravity="center"></ImageView>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textSize="15dp"
-                                android:layout_margin="10dp"
-                                android:text="Tra cứu tỷ giá">
-                            </TextView>
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_tigia"></ImageView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="15dp"
+                            android:layout_margin="10dp"
+                            android:text="Tra cứu tỷ giá">
+                        </TextView>
                         </LinearLayout>
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -268,14 +327,15 @@
                             <ImageView
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
-                                android:layout_gravity="center"></ImageView>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="10dp"
-                                android:textSize="15dp"
-                                android:text="Chia tiền">
-                            </TextView>
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_sharemoney"></ImageView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:textSize="15dp"
+                            android:text="Chia tiền">
+                        </TextView>
                         </LinearLayout>
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -284,14 +344,15 @@
                             <ImageView
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
-                                android:layout_gravity="center"></ImageView>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="10dp"
-                                android:textSize="15dp"
-                                android:text="Tính tiền lãi">
-                            </TextView>
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_benifit"></ImageView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:textSize="15dp"
+                            android:text="Tính tiền lãi">
+                        </TextView>
                         </LinearLayout>
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -300,14 +361,15 @@
                             <ImageView
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
-                                android:layout_gravity="center"></ImageView>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="10dp"
-                                android:textSize="15dp"
-                                android:text="Tiết kiệm gửi góp">
-                            </TextView>
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_savemoney"></ImageView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:textSize="15dp"
+                            android:text="Tiết kiệm gửi góp">
+                        </TextView>
                         </LinearLayout>
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -316,14 +378,15 @@
                             <ImageView
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
-                                android:layout_gravity="center"></ImageView>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="10dp"
-                                android:textSize="15dp"
-                                android:text="Thuế TNCN">
-                            </TextView>
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_house"></ImageView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:textSize="15dp"
+                            android:text="Thuế TNCN">
+                        </TextView>
                         </LinearLayout>
 
                     </LinearLayout>
@@ -351,14 +414,15 @@
                             <ImageView
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
-                                android:layout_gravity="center"></ImageView>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="10dp"
-                                android:textSize="15dp"
-                                android:text="Hướng đẫn sử dụng">
-                            </TextView>
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_help"></ImageView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:textSize="15dp"
+                            android:text="Hướng đẫn sử dụng">
+                        </TextView>
                         </LinearLayout>
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -367,14 +431,15 @@
                             <ImageView
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
-                                android:layout_gravity="center"></ImageView>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="10dp"
-                                android:textSize="15dp"
-                                android:text="Đánh giá ứng dụng">
-                            </TextView>
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_star"></ImageView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:textSize="15dp"
+                            android:text="Đánh giá ứng dụng">
+                        </TextView>
                         </LinearLayout>
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -383,7 +448,8 @@
                             <ImageView
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
-                                android:layout_gravity="center"></ImageView>
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_share"></ImageView>
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -399,14 +465,15 @@
                             <ImageView
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
-                                android:layout_gravity="center"></ImageView>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="10dp"
-                                android:textSize="15dp"
-                                android:text="Góp ý với nhà phát triển">
-                            </TextView></LinearLayout>
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_info"></ImageView>
+                        <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:textSize="15dp"
+                        android:text="Góp ý với nhà phát triển">
+                        </TextView></LinearLayout>
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -414,14 +481,15 @@
                             <ImageView
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
-                                android:layout_gravity="center"></ImageView>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="10dp"
-                                android:textSize="15dp"
-                                android:text="Thông tin sản phẩm">
-                            </TextView></LinearLayout>
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_mess"></ImageView>
+                        <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:textSize="15dp"
+                        android:text="Thông tin sản phẩm">
+                        </TextView></LinearLayout>
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -429,14 +497,15 @@
                             <ImageView
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
-                                android:layout_gravity="center"></ImageView>
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_logout"></ImageView>
                             <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="10dp"
-                                android:textSize="15dp"
-                                android:text="Đăng xuất">
-                            </TextView>
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:textSize="15dp"
+                            android:text="Đăng xuất">
+                             </TextView>
                         </LinearLayout>/
                     </LinearLayout>
                 </LinearLayout>
@@ -444,4 +513,3 @@
         </ScrollView>
     </FrameLayout>
 </LinearLayout>
-

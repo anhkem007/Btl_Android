@@ -67,7 +67,9 @@
     <string name="thu_ban_do">Bán đồ</string>
     <string name="thu_vay_no">Vay nợ</string>
     <string name="thu_lai_xuat">Lãi xuất</string>
-
+    <string name="intro">Cùng MISA MonkeyKeeper lập ra các hạn mức chi đê quản lý chi tiêu tốt hơn nhé</string>
+    <string name="stk">Hiện tại, bạn chưa có sổ tiết kiệm nào</string>
+    <string name="vayno">Hiện tại, bạn không có khoản cho vay hay Còn nợ nào</string>
 
 
 </resources>
