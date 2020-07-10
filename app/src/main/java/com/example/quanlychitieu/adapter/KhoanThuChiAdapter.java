@@ -63,8 +63,8 @@ public class KhoanThuChiAdapter extends BaseAdapter {
         sotien.setText(str + "đ");
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
         ngay.setText(simpleDateFormat.format(khoanThuChiList.get(position).getThoigian().getTime()).toString());
-        if(khoanThuChiList.get(position).getLoai()) convertView.setBackgroundColor(context.getResources().getColor(R.color.thu));
-        else convertView.setBackgroundColor(context.getResources().getColor(R.color.chi));
+        if(khoanThuChiList.get(position).getLoai()) convertView.setBackgroundColor(context.getResources().getColor(R.color.chi));
+        else convertView.setBackgroundColor(context.getResources().getColor(R.color.thu));
         return convertView;
     }
 }

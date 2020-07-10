@@ -35,12 +35,13 @@ public class FragmentReportHm extends Fragment {
     PieChart pieChart;
     EditText beginDate, endDate;
     RadioGroup radioGroup;
-    List<PieEntry> pieEntries , pieEntrieThu, pieEntriesChi;
+    List<PieEntry> pieEntries, pieEntrieThu, pieEntriesChi;
     int flag = 0;
     Description description = new Description();
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
     Long begin, end;
     Context context;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -51,6 +52,7 @@ public class FragmentReportHm extends Fragment {
         anhXa(view);
         return view;
     }
+
     public void anhXa(View view) {
 
         pieChart = (PieChart) view.findViewById(R.id.piechart);
@@ -62,17 +64,16 @@ public class FragmentReportHm extends Fragment {
         endDate = view.findViewById(R.id.enddate1);
 
 
-
         // khi bo forcus lay lai danh sach tim kiem
         beginDate.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 try {
-                    if(!hasFocus){
+                    if (!hasFocus) {
                         begin = simpleDateFormat.parse(beginDate.getText().toString()).getTime();
                         pieEntrieThu = MainActivity.khoanThuChiDao.getDataset(begin, end, 0);
-                        pieEntriesChi = MainActivity.khoanThuChiDao.getDataset(begin,end, 1);
-                        if(flag == 1) pieEntries = pieEntriesChi;
+                        pieEntriesChi = MainActivity.khoanThuChiDao.getDataset(begin, end, 1);
+                        if (flag == 1) pieEntries = pieEntriesChi;
                         else pieEntries = pieEntrieThu;
                         changeDataset();
                         beginDate.clearFocus();
@@ -87,11 +88,11 @@ public class FragmentReportHm extends Fragment {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 try {
-                    if(!hasFocus){
+                    if (!hasFocus) {
                         end = simpleDateFormat.parse(endDate.getText().toString()).getTime();
                         pieEntrieThu = MainActivity.khoanThuChiDao.getDataset(begin, end, 0);
-                        pieEntriesChi = MainActivity.khoanThuChiDao.getDataset(begin,end, 1);
-                        if(flag == 1) pieEntries = pieEntriesChi;
+                        pieEntriesChi = MainActivity.khoanThuChiDao.getDataset(begin, end, 1);
+                        if (flag == 1) pieEntries = pieEntriesChi;
                         else pieEntries = pieEntrieThu;
                         changeDataset();
                         beginDate.clearFocus();
@@ -105,8 +106,8 @@ public class FragmentReportHm extends Fragment {
 
         // khoi tao ngay thang tim kiem mac dinh
         Calendar calendar = Calendar.getInstance();
-        final String b = "1/" + (calendar.get(Calendar.MONTH) +1) + "/" + calendar.get(Calendar.YEAR);
-        String e = "1/" + (calendar.get(Calendar.MONTH) +2) + "/" + calendar.get(Calendar.YEAR);
+        final String b = "1/" + (calendar.get(Calendar.MONTH) + 1) + "/" + calendar.get(Calendar.YEAR);
+        String e = "1/" + (calendar.get(Calendar.MONTH) + 2) + "/" + calendar.get(Calendar.YEAR);
 
         try {
             this.begin = simpleDateFormat.parse(b).getTime();
@@ -134,7 +135,7 @@ public class FragmentReportHm extends Fragment {
                         flag = 0;
                         break;
                     case R.id.radchi:
-                        flag =1;
+                        flag = 1;
                         pieEntries = pieEntriesChi;
                         description.setText(context.getString(R.string.chi));
                         pieChart.setDescription(description);
@@ -146,7 +147,7 @@ public class FragmentReportHm extends Fragment {
         changeDataset();
     }
 
-    public void changeDataset(){
+    public void changeDataset() {
         PieDataSet pieDataSet = new PieDataSet(pieEntries, context.getResources().getString(R.string.khoanmuc));
         pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
         PieData pieData = new PieData(pieDataSet);

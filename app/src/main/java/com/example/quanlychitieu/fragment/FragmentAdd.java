@@ -51,10 +51,11 @@ public class FragmentAdd extends Fragment {
     Calendar calendar;
     List<DanhMucThuChi> danhMucThuChiList, danhMucChi, danhMucThu; // danh sach hang muc hien thi
     ViDao viDao;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        if(view != null) return view;
+        if (view != null) return view;
         view = inflater.inflate(R.layout.fragment_add, container, false);
         danhMucThu = MainActivity.danhMucThu;
         danhMucChi = MainActivity.danhMucChi;
@@ -69,11 +70,14 @@ public class FragmentAdd extends Fragment {
         edtTen = view.findViewById(R.id.tenkhoanthuchi);
         edtSoTien = view.findViewById(R.id.sotien);
         edtGhiChu = view.findViewById(R.id.edtghichu);
+
+        //khoi tao ngay mac dinh
         calendar = Calendar.getInstance();
         khoanThuChi.setThoigian(calendar);
         edtDate = view.findViewById(R.id.date);
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
         edtDate.setText(simpleDateFormat.format(calendar.getTime()));
+
         btndate = view.findViewById(R.id.btndate);
         btndate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,11 +97,10 @@ public class FragmentAdd extends Fragment {
         spnthuchi.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if(position == 0) {
+                if (position == 0) {
                     danhMucThuChiList = danhMucThu;
                     khoanThuChi.setLoai(false);
-                }
-                else {
+                } else {
                     danhMucThuChiList = danhMucChi;
                     khoanThuChi.setLoai(true);
                 }
@@ -136,11 +139,14 @@ public class FragmentAdd extends Fragment {
                 khoanThuChi.setTen(edtTen.getText().toString());
                 khoanThuChi.setGhiChu(edtGhiChu.getText().toString());
                 khoanThuChi.setTien(Float.parseFloat(edtSoTien.getText().toString()));
-                if(khoanThuChi.getViTien() == null){
-                    Toast.makeText(getContext(),getContext().getResources().getString(R.string.chuachonloaivi), Toast.LENGTH_SHORT).show();
-                } else if(MainActivity.khoanThuChiDao.themKhoanThuChi(khoanThuChi)){
+                if (khoanThuChi.getTien() == 0f) {
+                    Toast.makeText(getContext(), getContext().getResources().getString(R.string.loinhaptien), Toast.LENGTH_SHORT).show();
+
+                } else if (khoanThuChi.getViTien() == null) {
+                    Toast.makeText(getContext(), getContext().getResources().getString(R.string.chuachonloaivi), Toast.LENGTH_SHORT).show();
+                } else if (MainActivity.khoanThuChiDao.themKhoanThuChi(khoanThuChi)) {
                     MainActivity mainActivity = (MainActivity) getContext();
-                    Toast.makeText(mainActivity,mainActivity.getResources().getString(R.string.themthanhcong), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mainActivity, mainActivity.getResources().getString(R.string.themthanhcong), Toast.LENGTH_SHORT).show();
                     FragmentWallet.viTienList = MainActivity.viDao.getAllVi();
                     mainActivity.addFragmentAdd();
                 }
@@ -148,7 +154,8 @@ public class FragmentAdd extends Fragment {
             }
         });
     }
-    public void showPopupChonDanhMuc(){
+
+    public void showPopupChonDanhMuc() {
         final Dialog dialog = new Dialog(getContext());
         dialog.setContentView(R.layout.popup_list_danh_muc);
         ListView listView = dialog.findViewById(R.id.listdm);
@@ -165,6 +172,7 @@ public class FragmentAdd extends Fragment {
         });
         dialog.show();
     }
+
     public void showDatePickerDialog() {
         DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
             @Override
@@ -176,14 +184,15 @@ public class FragmentAdd extends Fragment {
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
                 edtDate.setText(simpleDateFormat.format(calendar.getTime()));
             }
-        },calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+        }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
         datePickerDialog.show();
     }
+
     public void showPopupChonVi() {
         final Dialog dialog = new Dialog(getContext());
         dialog.setContentView(R.layout.popup_list_vi);
         ListView listView = dialog.findViewById(R.id.listvi);
-        if(FragmentWallet.viTienList == null) {
+        if (FragmentWallet.viTienList == null) {
             FragmentWallet.viTienList = viDao.getAllVi();
         }
         ViAdapter viAdapter = new ViAdapter(getContext(), R.layout.item_list_vi_2, FragmentWallet.viTienList);
@@ -191,12 +200,12 @@ public class FragmentAdd extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-               khoanThuChi.setViTien(FragmentWallet.viTienList.get(position));
-               txttenvi.setText(FragmentWallet.viTienList.get(position).getTen());
-               if(FragmentWallet.viTienList.get(position).getLoai() == 2) {
-                   imgVi.setImageResource(R.drawable.credit_card);
-               } else imgVi.setImageResource(R.drawable.tien_mat);
-               dialog.dismiss();
+                khoanThuChi.setViTien(FragmentWallet.viTienList.get(position));
+                txttenvi.setText(FragmentWallet.viTienList.get(position).getTen());
+                if (FragmentWallet.viTienList.get(position).getLoai() == 2) {
+                    imgVi.setImageResource(R.drawable.credit_card);
+                } else imgVi.setImageResource(R.drawable.tien_mat);
+                dialog.dismiss();
             }
         });
         dialog.show();

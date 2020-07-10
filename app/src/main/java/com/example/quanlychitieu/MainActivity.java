@@ -54,7 +54,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     public static CallbackManager callbackManager;
-    public  Fragment home, wallet, user, add, report, fragmentlstc, fragmenthm, fragmentBdtc;
+    public Fragment home, wallet, user, add, report, fragmentlstc, fragmenthm, fragmentBdtc;
     public static DanhMucThuChiDAO danhMucThuChiDAO;
     public static ViDao viDao;
     public static KhoanThuChiDao khoanThuChiDao;
@@ -93,21 +93,21 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.home :
+                    case R.id.home:
                         fragment = home;
                         tagPresent = FragmentHome.class.getName();
                         break;
-                    case R.id.wallet :
+                    case R.id.wallet:
                         fragment = wallet;
                         tagPresent = FragmentWallet.class.getName();
                         break;
-                    case R.id.user :
+                    case R.id.user:
                         fragment = user;
                         break;
-                    case R.id.add :
+                    case R.id.add:
                         fragment = add;
                         break;
-                    case R.id.report :
+                    case R.id.report:
                         fragment = report;
                         break;
                 }
@@ -117,17 +117,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-    public void addFragmentAdd(){
+
+    public void addFragmentAdd() {
         add = new FragmentAdd();
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, add).commit();
     }
-    public void addFragmentLsthuchi(){
+
+    public void addFragmentLsthuchi() {
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, new FragmentReportLstc(), fragmentlstc.getClass().getSimpleName()).hide(fragment).show(fragmentlstc).addToBackStack(fragment.getClass().getSimpleName()).commit();
     }
-    public void addFragmentbcHangmuc(){
+
+    public void addFragmentbcHangmuc() {
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, fragmenthm, fragmenthm.getClass().getSimpleName()).hide(fragment).show(fragmenthm).addToBackStack(fragment.getClass().getSimpleName()).commit();
     }
-    public void addFragmentbdtc(){
+
+    public void addFragmentbdtc() {
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, fragmentBdtc, fragmentBdtc.getClass().getSimpleName()).hide(fragment).show(fragmentBdtc).addToBackStack(fragment.getClass().getSimpleName()).commit();
     }
 

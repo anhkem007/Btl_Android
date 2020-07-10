@@ -68,14 +68,14 @@ public class ViAdapter extends BaseAdapter {
         TextView tongtien = convertView.findViewById(R.id.tongtien);
         String str = numberFormat.format(viList.get(position).getSodu());
         tongtien.setText(str + "đ");
-        if(viList.get(position).getLoai() == 1) {
+        if (viList.get(position).getLoai() == 1) {
             imageView.setImageResource(R.drawable.tien_mat);
         }
-        if(viList.get(position).getLoai() == 2) {
+        if (viList.get(position).getLoai() == 2) {
             imageView.setImageResource(R.drawable.credit_card);
         }
 
-        if(layout == R.layout.item_list_vi){
+        if (layout == R.layout.item_list_vi) {
             ImageView edit = (ImageView) convertView.findViewById(R.id.edit_wallet);
 
             edit.setOnClickListener(new View.OnClickListener() {
@@ -114,8 +114,6 @@ public class ViAdapter extends BaseAdapter {
             });
 
 
-
-
             ImageView send = (ImageView) convertView.findViewById(R.id.send_wallet);
             send.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -133,11 +131,11 @@ public class ViAdapter extends BaseAdapter {
                     Button xacnhan = dialog.findViewById(R.id.xn);
                     final EditText sotien = dialog.findViewById(R.id.sotien);
                     huy.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            dialog.dismiss();
-                        }
-                    }
+                                               @Override
+                                               public void onClick(View v) {
+                                                   dialog.dismiss();
+                                               }
+                                           }
                     );
                     xacnhan.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -188,7 +186,6 @@ public class ViAdapter extends BaseAdapter {
                     });
                 }
             });
-
 
 
         }

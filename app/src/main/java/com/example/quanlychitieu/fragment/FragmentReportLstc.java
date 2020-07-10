@@ -41,10 +41,11 @@ public class FragmentReportLstc extends Fragment {
     Long begin, end;
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
     int flag = 2; //0 thu 1 chi 2 tatca
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        if(view != null) return view;
+        if (view != null) return view;
         view = inflater.inflate(R.layout.fragment_baocao_lichsuthuchi, container, false);
         anXa(view);
         khoanThuChiList = MainActivity.khoanThuChiDao.getbyDate(begin, end);
@@ -52,14 +53,15 @@ public class FragmentReportLstc extends Fragment {
         listKhoanTC.setAdapter(khoanThuChiAdapter);
         return view;
     }
+
     public void anXa(View view) {
         beginDate = view.findViewById(R.id.begindate1);
         endDate = view.findViewById(R.id.enddate1);
 
         // khoi tao ngay thang tim kiem mac dinh
         Calendar calendar = Calendar.getInstance();
-        String b = "1/" + (calendar.get(Calendar.MONTH) +1) + "/" + calendar.get(Calendar.YEAR);
-        String e = "1/" + (calendar.get(Calendar.MONTH) +2) + "/" + calendar.get(Calendar.YEAR);
+        String b = "1/" + (calendar.get(Calendar.MONTH) + 1) + "/" + calendar.get(Calendar.YEAR);
+        String e = "1/" + (calendar.get(Calendar.MONTH) + 2) + "/" + calendar.get(Calendar.YEAR);
         try {
             this.begin = simpleDateFormat.parse(b).getTime();
             this.end = simpleDateFormat.parse(e).getTime();
@@ -73,7 +75,7 @@ public class FragmentReportLstc extends Fragment {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 try {
-                    if(!hasFocus){
+                    if (!hasFocus) {
                         begin = simpleDateFormat.parse(beginDate.getText().toString()).getTime();
                         khoanThuChiList = MainActivity.khoanThuChiDao.getbyDate(begin, end, flag);
                         khoanThuChiAdapter.setKhoanThuChiList(khoanThuChiList);
@@ -89,7 +91,7 @@ public class FragmentReportLstc extends Fragment {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 try {
-                    if(!hasFocus){
+                    if (!hasFocus) {
                         end = simpleDateFormat.parse(endDate.getText().toString()).getTime();
                         khoanThuChiList = MainActivity.khoanThuChiDao.getbyDate(begin, end, flag);
                         khoanThuChiAdapter.setKhoanThuChiList(khoanThuChiList);
@@ -102,7 +104,6 @@ public class FragmentReportLstc extends Fragment {
         });
 
 
-
         listKhoanTC = view.findViewById(R.id.listlstc);
         radioGroup = view.findViewById(R.id.ragroup);
 
@@ -112,13 +113,13 @@ public class FragmentReportLstc extends Fragment {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId) {
                     case R.id.radthu:
-                        flag =0;
+                        flag = 0;
                         break;
                     case R.id.radchi:
-                        flag =1;
+                        flag = 1;
                         break;
                     case R.id.radtatca:
-                        flag =2;
+                        flag = 2;
                         break;
                 }
                 khoanThuChiList = MainActivity.khoanThuChiDao.getbyDate(begin, end, flag);
@@ -137,14 +138,15 @@ public class FragmentReportLstc extends Fragment {
         });
 
     }
-    public void showPopupChiTiet(KhoanThuChi khoanThuChi){
+
+    public void showPopupChiTiet(final KhoanThuChi khoanThuChi) {
         final Dialog dialog = new Dialog(getContext());
         dialog.setContentView(R.layout.popup_khoanthuchi);
         TextView ten = dialog.findViewById(R.id.popupten);
         ten.setText(khoanThuChi.getTen());
         TextView sotien = (TextView) dialog.findViewById(R.id.popupsotien);
-        sotien.setText(khoanThuChi.getTien().toString()+"đ");
-        TextView tg =  dialog.findViewById(R.id.popupngay);
+        sotien.setText(khoanThuChi.getTien().toString() + "đ");
+        TextView tg = dialog.findViewById(R.id.popupngay);
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
         tg.setText(simpleDateFormat.format(khoanThuChi.getThoigian().getTime()).toString());
         TextView dm = dialog.findViewById(R.id.popupdanhmuc);
@@ -154,9 +156,20 @@ public class FragmentReportLstc extends Fragment {
         TextView ghichu = dialog.findViewById(R.id.popupghichu);
         ghichu.setText(khoanThuChi.getGhiChu());
         Button button = dialog.findViewById(R.id.popupbtnclose);
+        Button delete = dialog.findViewById(R.id.delete);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity.khoanThuChiDao.xoaKhoanThuChi(khoanThuChi.getId());
+                khoanThuChiList = MainActivity.khoanThuChiDao.getbyDate(begin, end, flag);
+                khoanThuChiAdapter.setKhoanThuChiList(khoanThuChiList);
+                Toast.makeText(getContext(), getContext().getString(R.string.xoathanhcong), Toast.LENGTH_LONG).show();
                 dialog.dismiss();
             }
         });

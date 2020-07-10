@@ -23,18 +23,17 @@ public class ViDao extends SQLiteOpenHelper {
     public static final String TRANG_THAI = "trangthai";
 
     public static final String CREATE_TB = "CREATE TABLE " + TB_NAME + "( " +
-                                            ID + " INTEGER PRIMARY KEY AUTOINCREMENT ," +
-                                            TEN + " TEXT, " +
-                                            SO_DU + " REAL ," +
-                                            LOAI + " INTEGER, " +
-                                            TRANG_THAI + " INTEGER )";
-
+            ID + " INTEGER PRIMARY KEY AUTOINCREMENT ," +
+            TEN + " TEXT, " +
+            SO_DU + " REAL ," +
+            LOAI + " INTEGER, " +
+            TRANG_THAI + " INTEGER )";
 
 
     public static final Integer VERSION = 1;
 
-    public ViDao(Context context){
-        super(context, DB_NAME,null, VERSION);
+    public ViDao(Context context) {
+        super(context, DB_NAME, null, VERSION);
         this.context = context;
     }
 
@@ -49,9 +48,10 @@ public class ViDao extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
+
     SQLiteDatabase database = getWritableDatabase();
     List<ViTien> listvi = new ArrayList<>();
-    Cursor cursor = database.query(TB_NAME, null, null, null, null, null ,null);
+    Cursor cursor = database.query(TB_NAME, null, null, null, null, null, null);
 
     public void themVi(ViTien viTien) {
         SQLiteDatabase database = getWritableDatabase();
@@ -63,11 +63,11 @@ public class ViDao extends SQLiteOpenHelper {
         database.insert(TB_NAME, null, contentValues);
     }
 
-    public List<ViTien> getAllVi(){
+    public List<ViTien> getAllVi() {
         SQLiteDatabase database = getWritableDatabase();
         List<ViTien> listvi = new ArrayList<>();
-        Cursor cursor = database.query(TB_NAME, null, TRANG_THAI + " = ? ", new String[]{"1"}, null, null ,null);
-        while (cursor.moveToNext()){
+        Cursor cursor = database.query(TB_NAME, null, TRANG_THAI + " = ? ", new String[]{"1"}, null, null, null);
+        while (cursor.moveToNext()) {
             int id = cursor.getInt(0);
             String ten = cursor.getString(1);
             float sodu = cursor.getFloat(2);
@@ -76,11 +76,12 @@ public class ViDao extends SQLiteOpenHelper {
         }
         return listvi;
     }
-    public ViTien getViById(Integer id){
+
+    public ViTien getViById(Integer id) {
         ViTien vi = new ViTien();
         SQLiteDatabase database = getWritableDatabase();
-        Cursor cursor = database.query(TB_NAME, null, ID +" = ?", new String[]{id.toString()}, null, null ,null);
-        if(cursor.moveToNext()) {
+        Cursor cursor = database.query(TB_NAME, null, ID + " = ?", new String[]{id.toString()}, null, null, null);
+        if (cursor.moveToNext()) {
             String ten = cursor.getString(1);
             float sodu = cursor.getFloat(2);
             int loai = cursor.getInt(3);
@@ -88,7 +89,8 @@ public class ViDao extends SQLiteOpenHelper {
         }
         return vi;
     }
-    public void xoaVi(Integer id){
+
+    public void xoaVi(Integer id) {
         SQLiteDatabase database = getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(TRANG_THAI, 0);

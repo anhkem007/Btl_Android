@@ -44,7 +44,7 @@ public class FragmentWallet extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        if(view != null) {
+        if (view != null) {
             viAdapter.setViList(viTienList);
             setTongTien();
             return view;
@@ -78,13 +78,13 @@ public class FragmentWallet extends Fragment {
         final EditText sodu = dialog.findViewById(R.id.edtsodu);
         final Spinner spinner = dialog.findViewById(R.id.spnloaivi);
         final ImageView imageLoai = dialog.findViewById(R.id.imgloaivi);
-        spinner.setAdapter(new ArrayAdapter<>(getContext(), R.layout.support_simple_spinner_dropdown_item, new String[]{getContext().getString(R.string.loaitienmat),getContext().getString(R.string.loaithe)}));
+        spinner.setAdapter(new ArrayAdapter<>(getContext(), R.layout.support_simple_spinner_dropdown_item, new String[]{getContext().getString(R.string.loaitienmat), getContext().getString(R.string.loaithe)}));
         Button btnLuu = (Button) dialog.findViewById(R.id.btnluu);
         Button btnhuy = (Button) dialog.findViewById(R.id.btnthoat);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if(position == 0 ){
+                if (position == 0) {
                     imageLoai.setImageResource(R.drawable.tien_mat);
                 } else imageLoai.setImageResource(R.drawable.credit_card);
             }
@@ -117,9 +117,10 @@ public class FragmentWallet extends Fragment {
         });
         dialog.show();
     }
-    public void setTongTien(){
+
+    public void setTongTien() {
         tongtien = 0f;
-        for(ViTien viTien : viTienList){
+        for (ViTien viTien : viTienList) {
             tongtien = tongtien + viTien.getSodu();
         }
         String str = numberFormat.format(tongtien) + "đ";

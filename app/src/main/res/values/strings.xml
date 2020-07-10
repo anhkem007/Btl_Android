@@ -21,6 +21,7 @@
     <string name="hangmuc">Hạng mục: </string>
     <string name="ghichu">Ghi chú: </string>
     <string name="dong">Đóng</string>
+    <string name="xoa">Xóa</string>
     <string name="nhapdungtime">Nhập đúng đinh dạng thời gian!</string>
     <string name="sotienkhongdu">Số tiền của ví không đủ!</string>
     <string name="phantichthoethang">Biểu đồ thu chi</string>
@@ -48,6 +49,13 @@
     <string name="xacnhanxoa">Xác nhận xóa ví: </string>
     <string name="baocaothuchitheothang">Năm 2020</string>
     <string name="thang">Tháng</string>
+    <string name="ngay1">Ngày</string>
+    <string name="loinhaptien">Nhập vào số tiền!</string>
+    <string name="lichsu">Lịch sử thu chi</string>
+    <string name="bieudohangmuc">Biểu đồ hạng mục</string>
+    <string name="bieudochitieu">Biểu đồ thu chi</string>
+    <string name="xoathanhcong">Xóa thành công!</string>
+    <string name="hanmucthuchi">Hạn mức thu chi</string>
 
     <!--    Mục chi -->
     <string name="mucchi">Chi tiền</string>
@@ -67,7 +75,7 @@
     <string name="thu_ban_do">Bán đồ</string>
     <string name="thu_vay_no">Vay nợ</string>
     <string name="thu_lai_xuat">Lãi xuất</string>
-    <string name="intro">Cùng MISA MonkeyKeeper lập ra các hạn mức chi đê quản lý chi tiêu tốt hơn nhé</string>
+    <string name="intro">Cùng MonkeyKeeper lập ra các hạn mức chi đê quản lý chi tiêu tốt hơn nhé</string>
     <string name="stk">Hiện tại, bạn chưa có sổ tiết kiệm nào</string>
     <string name="vayno">Hiện tại, bạn không có khoản cho vay hay Còn nợ nào</string>
 

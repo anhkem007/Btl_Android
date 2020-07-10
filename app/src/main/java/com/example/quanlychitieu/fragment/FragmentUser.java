@@ -27,22 +27,24 @@ import androidx.fragment.app.Fragment;
 
 public class FragmentUser extends Fragment {
     LoginButton loginButton;
-    TextView ten,mail,ns;
+    TextView ten, mail, ns;
     ProfilePictureView profilePictureView;
     SharedPreferences sharedPreferences;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View  view = inflater.inflate(R.layout.fragment_user, container, false);
+        View view = inflater.inflate(R.layout.fragment_user, container, false);
         anhXa(view);
         return view;
     }
-    public void anhXa(View view){
+
+    public void anhXa(View view) {
         sharedPreferences = getContext().getSharedPreferences("profile", Context.MODE_PRIVATE);
         final SharedPreferences.Editor editor = sharedPreferences.edit();
         profilePictureView = view.findViewById(R.id.image);
         ten = view.findViewById(R.id.ten);
-        mail= view.findViewById(R.id.mail);
+        mail = view.findViewById(R.id.mail);
         ns = view.findViewById(R.id.birday);
         getprofile();
         loginButton = view.findViewById(R.id.login_button);
@@ -94,14 +96,16 @@ public class FragmentUser extends Fragment {
 
     }
 
-    public void getprofile(){
+    public void getprofile() {
         String mail = sharedPreferences.getString("mail", "mail");
-        String birday =sharedPreferences.getString("sn", "ns");
+        String birday = sharedPreferences.getString("sn", "ns");
         String name = sharedPreferences.getString("name", "");
-        String pro = sharedPreferences.getString("id","");
+        String pro = sharedPreferences.getString("id", "");
         profilePictureView.setProfileId(pro);
         ten.setText(name);
         ns.setText(birday);
         this.mail.setText(mail);
-    };
+    }
+
+    ;
 }
